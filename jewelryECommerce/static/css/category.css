@@ -1,0 +1,121 @@
+.banner {
+    width: 500px;
+    font-weight: 800px;
+    font-size: 50px;
+    font-family: "Montserrat", sans-serif;
+}
+.bannerD{
+    width: 500px;
+}
+.textSize{
+    font-size: smaller;
+}
+.TextWeight{
+    font-weight: 700;
+}
+.categoryTitle,.FilterButton{
+    font-family: "Montserrat", sans-serif;
+}
+.form-check-input:checked {
+    background-color: #343a40; /* Koyu arka plan rengi */
+    border-color: #343a40; /* Koyu kenarlık rengi */
+}
+
+.form-check-input {
+    width: 20px; /* Checkbox genişliği */
+    height: 20px; /* Checkbox yüksekliği */
+}
+
+.form-check-label {
+    font-size: small;
+}
+
+.box{
+    font-size: small;
+}
+.ShowDetails {
+    width: 90%;
+    display: none;
+    opacity: 0; /* Başlangıçta tamamen görünmez */
+    transition: opacity 0.9s ease; /* Opaklık değişimini 0.5 saniyede yapacak */
+}
+.s1:hover .ShowDetails {
+    display: block !important;
+    opacity: 1; /* Yavaşça görünür hale gelecek */
+}
+.s2 p{
+    font-size: small;
+    
+}
+.price{
+    font-family: "Montserrat", sans-serif;
+    font-size: medium;
+}
+.filters{
+    display: none;
+}
+.size-label.checked {
+    background-color: black;
+    color: white;
+}
+.CategoryMenusM{
+    display: none;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .PriceM{
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+    .PriceMP{
+        margin-left: 70px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    select{
+        background-color: blue;
+    }
+    .PriceM{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    .Progress{
+        display: none;
+    }
+    .banner,.bannerD{
+        text-align: center;
+        width: auto;
+        font-size: 12px;
+        
+    }
+    .banner{
+        font-size: large;
+        font-weight: 700;
+    }
+    .textSize {
+        width: 100%; /* Makes the textSize div full width */
+    }
+    
+    .PriceM {
+        flex-direction: column !important; /* Stack the elements vertically */
+        align-items: center !important; /* Center everything */
+        text-align: center; /* Center text inside the textSize div */
+    }
+
+    .d-flex.align-items-center { 
+        justify-content: center;
+        margin-top: 15px; /* Adds space between the text and progress bar */
+    }
+    .CategoryMenusC{
+        display: none;
+    }
+    .CategoryMenusM{
+        display: block;
+    }
+    .filtersM{
+        display: none;
+    }
+}

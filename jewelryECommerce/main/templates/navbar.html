@@ -1,0 +1,891 @@
+{% load static %}
+{% load mptt_tags %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<a href="#" id="inform"  class="mt-0 pt-1 d-flex align-items-center justify-content-center">
+    PANDORA CLUB’IN AVANTAJLI DÜNYASINA ADIM AT
+</a>
+<!-- START responsive navbar for computer   -->
+<div id="navbar" class="">
+    <!-- START responsive MainNavbar for computer -->
+    <div class="container px-0 d-none d-lg-block " >
+            <div class="row  m-0 p-0">
+                <div class="col-6 d-flex align-items-center">
+                    <h2 class="ms-2 my-2 "><a href="{% url 'index' %}" class="text-decoration-none text-dark">PANDORA</a></h2>
+                </div>
+                <div class="col-6 my-2 d-flex justify-content-end align-items-center pb-2 mt-3">
+                    <div id="search" class="d-flex align-items-center border p-2 me-3 position-relative">
+                        <input type="text" class="p-1 border-0" placeholder="Ara" id="search-input">
+                        <i class="bi bi-search fs-5"></i>
+                        <div id="search-results" class="dropdown-menu">
+                            <div class="row search-items">
+                                <div class="col-12 ">
+                                    <p class="title container mt-4 mb-3">Sonuclar</p>
+                                    <div class="container">
+                                        <div class="row mt-3">
+                                            <div class="product-images col-4">
+                                                <img class="img-fluid" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details  col-8 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="pb-1">Boncuklu ve Pavé Bilezik</p>
+                                                    <p>7.259,00 TL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row  mt-3">
+                                            <div class="product-images col-4">
+                                                <img class="img-fluid" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details  col-8 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="pb-1">Boncuklu ve Pavé Bilezik</p>
+                                                    <p>7.259,00 TL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="product-images col-4">
+                                                <img class="img-fluid" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details  col-8 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="pb-1">Boncuklu ve Pavé Bilezik</p>
+                                                    <p>7.259,00 TL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row  mt-3">
+                                            <div class="product-images col-4">
+                                                <img class="img-fluid" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details  col-8 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="pb-1">Boncuklu ve Pavé Bilezik</p>
+                                                    <p>7.259,00 TL</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row search-items">
+                                <div class="col-12 ">
+                                    <p class="title container mb-3">Kategoriler</p>
+                                    <div class="container">
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="name pb-1 text-dark ">Bileklikler</p>
+                                                    <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="name pb-1 text-dark ">Bileklikler</p>
+                                                    <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex  align-items-center">
+                                                <div>
+                                                    <p class="name pb-1 text-dark ">Bileklikler</p>
+                                                    <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row search-items">
+                                <div class="col-12 ">
+                                    <p class="title container mb-3">İlgili Aramalar</p>
+                                    <div class="container">
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex  align-items-center">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="row">
+                                                        <div class="col-4 mt-2"><a href="#" class="text-decoration-none "><li class="border py-1 rounded-5 relating-items d-flex justify-content-center align-items-center">charm <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i></li></a></div>
+                                                        <div class="col-4 mt-2"><a href="#" class="text-decoration-none "><li class="border py-1 rounded-5 relating-items d-flex justify-content-center align-items-center">charmlar <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i></li></a></div>
+                                                        <div class="col-4 mt-2"><a href="#" class="text-decoration-none "><li class="border py-1 rounded-5 relating-items d-flex justify-content-center align-items-center">kolye <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i></li></a></div>
+                                                        <div class="col-4 mt-2"><a href="#" class="text-decoration-none "><li class="border py-1 rounded-5 relating-items d-flex justify-content-center align-items-center">bileklik <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i></li></a></div>                                               
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row brand-items">
+                                <div class="col-12 ">
+                                    <p class="title container mb-3">Makaleler</p>
+                                    <div class="container">
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex  align-items-center">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="row">
+                                                        <ul class="list-unstyled">
+                                                            <li class="py-1"><a href="#" class=" text-lines ">Bileklik beden kılavuzu</a></li>
+                                                            <li class="py-1"><a href="#" class=" text-lines ">JulyPromo Terms and Conditions</a></li>
+                                                            <li class="py-1"><a href="#" class=" text-lines  ">Pandora Weekend Hüküm ve Koşulları</a></li>
+                                                        </ul>                                              
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icons d-flex  justify-content-center align-items-center fs-4 gap-3 mt-2 ">
+                        <a href="#" class=""><i class="text-dark bi bi-heart"></i></a>
+                        <a href="#"><i class="text-dark bi bi-geo-alt"></i></a>
+                        <a href="#"><i class="text-dark bi bi-person"></i></a>
+                        <a href="#"><i class="text-dark bi bi-bag"></i></a>
+                    </div>
+                
+                    
+                </div>
+            </div>
+    </div>
+    <!-- FINISH responsive MainNavbar for computer -->
+    <div id="line" class="pt-1 border-0"></div>
+
+    <!-- START responsive menu for computer -->
+    <div class="container d-none d-lg-block p-0" id="navbarMenu">
+        <ul class="nav menu py-2 gap-2">
+            {% for item in menu_items %}
+                {% if not item.parent %}
+                    <li class="nav-item d-flex align-items-center position-relative" data-id="{{ item.id }}">
+                        <a href="{% url 'category' category_slug=item.slug %}" class="nav-link text-dark pe-0 text-uppercase " style="font-size: 12px;">{{ item.name }}</a>
+                        <i class="bi bi-chevron-down ps-2" style="font-size: 10px;"></i>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="dropdown-menu-custom" id="dropdownMenu">
+            <div class="container ss">
+                <ul id="menu-content" class="container d-flex m-0 p-0">
+                    <!-- Dinamik menü içerikleri buraya gelecek -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- FINISH responsive menu for computer -->
+    <hr class="mt-0  d-none d-lg-block  m-0 p-0">
+</div>
+<!-- FINISH responsive navbar for computer -->
+
+
+
+<!-- START responsive navbar for mobile -->
+<div class="container px-0 d-block d-lg-none" id="NavbarMobile">
+    <div class="row py-2 m-0 p-0">
+        <div class="col-4 m-0 p-0">
+            <div class="icons d-flex  justify-content-center align-items-center fs-4 gap-3 mt-2 ">
+                <div type="button" class="" data-bs-toggle="modal" data-bs-target="#leftModal"><i class="text-dark bi bi-list"></i></div>
+                <div type="button" class="" data-bs-toggle="modal" data-bs-target="#topModal" ><i class="bi bi-search fs-5"></i></div>
+            </div>
+        </div>
+        <div class="col-4 m-0 p-0">
+            <h1 class="ms-md-2 my-2 text-center p-0 ">PANDORA</h1>
+        </div>
+        <div class="col-4 m-0 p-0">
+            <div class="icons d-flex  justify-content-center align-items-center fs-4 gap-3 mt-2 ">
+                <a href="#"><i class="text-dark bi bi-person "></i></a>
+                <a href="#"><i class="text-dark bi bi-bag"></i></a>
+            </div>
+        </div>
+    </div>
+    <div id="line" class="pt-1 border-0"></div>
+</div>
+
+
+<!-- START responsive MENU for Mobile -->
+
+<div class="modals">
+<!-- Modal Menu mobil -->
+<div class="modal left fade" id="leftModal" tabindex="-1" aria-labelledby="leftModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0 rounded-0 " style="background-color: rgb(238, 238, 238);">
+                <button type="button" class=" btn-close py-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-0 p-0">
+                <!-- Main menu content -->
+                <ul class="nav flex-column text-uppercase" id="mainMenu">
+                    <!-- Main menu content will be dynamically populated -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Second Modal Menu -->
+<div class="modal second left fade" id="secondLeftModal" tabindex="-1" aria-labelledby="secondLeftModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0 rounded-0" style="background-color: rgb(238, 238, 238);">
+                <!-- Back Button -->
+                <button type="button" class="btn fs-5 me-auto d-flex" id="backButtonSecond" aria-label="Back">
+                    <i class="bi bi-chevron-left fs-4 me-2"></i><div>Geri</div>
+                </button>
+                <!-- Close Button -->
+                <button type="button" class="btn-close py-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-0 p-0">
+                <!-- Second level menu content -->
+                <a id="selectedCategoryHeader" class="modal-header h2 text-center text-dark text-decoration-none text-uppercase fw-semibold" style="font-family: 'Pandora Text', Arial, sans-serif;">
+                    <!-- Ana başlık burada gösterilecek -->
+                </a>
+                <ul class="nav flex-column m-0" id="secondMenu">
+                    <!-- Second level menu content will be dynamically populated -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Third Modal Menu -->
+<div class="modal third left fade" id="thirdLeftModal" tabindex="-1" aria-labelledby="thirdLeftModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0 rounded-0" style="background-color: rgb(238, 238, 238);">
+                <!-- Back Button -->
+                <button type="button" class="btn fs-5 me-auto d-flex" id="backButtonThird" aria-label="Back">
+                    <i class="bi bi-chevron-left fs-4 me-2"></i><div>Geri</div>
+                </button>
+                <!-- Close Button -->
+                <button type="button" class="btn-close py-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-0 p-0">
+                <a id="selectedCategoryItem" class="modal-header h2 text-center text-dark text-decoration-none text-uppercase fw-semibold" style="font-family: 'Pandora Text', Arial, sans-serif;">
+                    <!-- Ana başlık burada gösterilecek -->
+                </a>
+                <!-- Third level menu content -->
+                <ul class="nav flex-column" id="thirdMenu">
+                    <!-- Third level menu content will be dynamically populated -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Search -->
+<div class="modal fullscreen fade" id="topModal" tabindex="-1" aria-labelledby="topModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-body m-0 p-0">
+                <!-- Menu content -->
+                <div class="container">
+                    <div class="row mt-4 mx-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="input-group p-1 position-relative">
+                                <input type="text" class="search-form w-100 border-1 p-2 px-3 rounded-0 border-dark" placeholder="Ara" id="searchInputMobile">
+                                <div class="btn-close position-absolute top-50 end-0 translate-middle-y me-3 border-0 bg-none" id="clearButton" data-bs-dismiss="modal" aria-label="Close"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-4 mx-4">
+                </div>  
+                <div class="container " id="searchMobileDetail0">
+                    <div class="row  mx-2">
+                        <div class="col-12 my-3">
+                            <p class="text-secondary">Populer Aramalar</p>
+                        </div>
+                        <div class="col-12">
+                            <ul class="d-flex flex-wrap no-bullet gap-2 p-0">
+                                <li class="border py-1 px-4 rounded-5">Charm <i class="bi bi-chevron-right ms-1" style="font-size: 10px;"></i></li>
+                                <li class="border py-1 px-4 rounded-5">bileklik<i class="bi bi-chevron-right ms-1" style="font-size: 10px;"></i></li>
+                                <li class="border py-1 px-4 rounded-5">bileklikler<i class="bi bi-chevron-right ms-1" style="font-size: 10px;"></i></li>
+                                <li class="border py-1 px-4 rounded-5">Charms<i class="bi bi-chevron-right ms-1" style="font-size: 10px;"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container " id="searchMobileDetail1" style="display: none;">
+                    <div class="row search-items">
+                        <div class="col-12 ">
+                            <p class="title container mt-4 mb-3">Sonuclar</p>
+                            <div class="container">
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark" style="flex-wrap: nowrap;">
+                                            <div class="product-images me-3">
+                                                <img class="img-fluid" style="max-height: 80px; width: auto;" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details" style="min-width: 0;">
+                                                <p class="pb-1 mb-0 text-nowrap text-truncate">Boncuklu ve Pavé Bilezik</p>
+                                                <p class="mb-0 text-nowrap">7.259,00 TL</p>
+                                            </div>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark" style="flex-wrap: nowrap;">
+                                            <div class="product-images me-3">
+                                                <img class="img-fluid" style="max-height: 80px; width: auto;" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details" style="min-width: 0;">
+                                                <p class="pb-1 mb-0 text-nowrap text-truncate">Boncuklu ve Pavé Bilezik</p>
+                                                <p class="mb-0 text-nowrap">7.259,00 TL</p>
+                                            </div>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <a href="#" class="d-flex align-items-center text-decoration-none text-dark" style="flex-wrap: nowrap;">
+                                            <div class="product-images me-3">
+                                                <img class="img-fluid" style="max-height: 80px; width: auto;" src="{% static 'image/product-1.png' %}" alt="">
+                                            </div>
+                                            <div class="product-details" style="min-width: 0;">
+                                                <p class="pb-1 mb-0 text-nowrap text-truncate">Boncuklu ve Pavé Bilezik</p>
+                                                <p class="mb-0 text-nowrap">7.259,00 TL</p>
+                                            </div>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row search-items">
+                        <div class="col-12 ">
+                            <p class="title container mb-3">Kategoriler</p>
+                            <div class="container">
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex  align-items-center">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <p class="name pb-1  ">Bileklikler</p>
+                                            <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex  align-items-center">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <p class="name pb-1  ">Bileklikler</p>
+                                            <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex  align-items-center">
+                                        <a href="#" class="text-decoration-none text-dark">
+                                            <p class="name pb-1  ">Bileklikler</p>
+                                            <p class="category-details">şurada: Charm’lar ve Bileklikler</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row search-items">
+                        <div class="col-12 ">
+                            <p class="title container mb-3">İlgili Aramalar</p>
+                            <div class="container">
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex  align-items-center">
+                                        <div class="d-flex flex-wrap justify-content-start mt-2">
+                                            <a href="#" class="text-decoration-none">
+                                                <li class="border py-1 px-3 rounded-5 relating-items d-flex justify-content-center align-items-center m-2">
+                                                    charm <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i>
+                                                </li>
+                                            </a>
+                                            <a href="#" class="text-decoration-none">
+                                                <li class="border py-1 px-3 rounded-5 relating-items d-flex justify-content-center align-items-center m-2">
+                                                    charmlar <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i>
+                                                </li>
+                                            </a>
+                                            <a href="#" class="text-decoration-none">
+                                                <li class="border py-1 px-3 rounded-5 relating-items d-flex justify-content-center align-items-center m-2">
+                                                    kolye <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i>
+                                                </li>
+                                            </a>
+                                            <a href="#" class="text-decoration-none">
+                                                <li class="border py-1 px-3 rounded-5 relating-items d-flex justify-content-center align-items-center m-2">
+                                                    bileklik <i class="bi bi-arrow-right-short ms-1" style="font-size: 15px;"></i>
+                                                </li>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row brand-items">
+                        <div class="col-12 ">
+                            <p class="title container mb-3">Makaleler</p>
+                            <div class="container">
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex  align-items-center">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="row">
+                                                <ul class="list-unstyled">
+                                                    <li class="py-1"><a href="#" class="text-decoration-none text-dark text-lines">Bileklik beden kılavuzu</a></li>
+                                                    <li class="py-1"><a href="#" class="text-decoration-none text-dark text-lines">JulyPromo Terms and Conditions</a></li>
+                                                    <li class="py-1"><a href="#" class="text-decoration-none text-dark text-lines">Pandora Weekend Hüküm ve Koşulları</a></li>
+                                                </ul>                                              
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('clearButton').addEventListener('click', function() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('searchInput').focus();
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.icons a, .icons div').forEach(element => {
+        element.classList.add('hover-effect');
+    });
+</script>
+
+<!-- Search dropdown for big screen -->
+<script>
+    document.getElementById('search-input').addEventListener('input', function() {
+    const searchResults = document.getElementById('search-results');
+    if (this.value) {
+        searchResults.style.display = 'block';
+        // searchResults.innerHTML = `<p class="p-2 m-0">Searching for "${this.value}"...</p>`;
+    } else {
+        searchResults.style.display = 'none';
+    }
+    });
+</script>
+
+<!-- Search dropdown for small screen -->
+<script>
+    // Handling the input event for typing in the input field
+    document.getElementById('searchInputMobile').addEventListener('input', function() {
+        const searchMobileDetail0 = document.getElementById('searchMobileDetail0');
+        const searchMobileDetail1 = document.getElementById('searchMobileDetail1');
+        const clearButton = document.getElementById('clearButton');
+        
+        if (this.value) {
+            searchMobileDetail0.style.display = 'none';
+            searchMobileDetail1.style.display = 'block';
+            clearButton.style.display = 'block';  // Show the close button when typing
+        } else {
+            searchMobileDetail0.style.display = 'block';
+            searchMobileDetail1.style.display = 'none';
+            clearButton.style.display = 'none';  // Hide the close button when input is empty
+        }
+    });
+
+    // Handling the clear button click event
+    document.getElementById('clearButton').addEventListener('click', function() {
+        const searchInput = document.getElementById('searchInputMobile');
+        const searchMobileDetail0 = document.getElementById('searchMobileDetail0');
+        const searchMobileDetail1 = document.getElementById('searchMobileDetail1');
+
+        searchInput.value = '';  // Clear the input field
+        searchMobileDetail0.style.display = 'block';  // Show the first detail
+        searchMobileDetail1.style.display = 'none';  // Hide the second detail
+        this.style.display = 'none';  // Hide the close button
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navItems = document.querySelectorAll('.nav-item');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const menuContent = document.getElementById('menu-content');
+        
+        let timeoutId; // Zamanlayıcı ID'sini tutmak için
+
+        // Django'dan gelen verileri bir değişkende hazırlıyoruz
+        const menus = JSON.parse('{{ menus_json|escapejs }}'); // JSON formatında veriyi al
+
+        function updateMenuContent(menuId) {
+            const menu = menus[menuId]; // İlgili menüyü al
+            menuContent.innerHTML = ''; // Mevcut içeriği temizle
+
+            if (menu && menu.children.length > 0) {
+                let content = `
+                    <div class="container">
+                        <div id="menu-content" class="d-flex justify-content-center">
+                `; // Başlangıç HTML içeriği
+
+                menu.children.forEach(section => {
+                    content += `
+                        <div class="menu-section">
+                            <a href="/category/${section.slug}/" class="text-decoration-none TextUnderLine text-dark menu-title text-uppercase fw-semibold">${section.title}</a>
+                            <div class="menu-items mt-3">
+                                ${section.items.map(item => `
+                                    <div class="menu-item mt-2">
+                                        <a href="/category/${item.slug}/" class="text-decoration-none TextUnderLine">${item.name}</a>
+                                    </div>
+                                    `).join('')}
+                            </div>
+                        </div>`;
+                }); 
+
+                content += `
+                        </div>
+                    </div>`; // Kapatma etiketleri
+
+                menuContent.innerHTML = content; // Dinamik içeriği güncelle
+            }
+        }
+
+        // Menü açma fonksiyonu
+        function showMenu(menuId) {
+            clearTimeout(timeoutId); // Önceki kapanma zamanlayıcısını temizle
+            updateMenuContent(menuId); // Menü içeriğini güncelle
+            dropdownMenu.style.display = 'block'; // Dropdown menüyü göster
+        }
+
+        // Menü kapama fonksiyonu (gecikmeli)
+        function hideMenu() {
+            timeoutId = setTimeout(() => {
+                dropdownMenu.style.display = 'none'; // Dropdown menüyü gizle
+            }, 200); 
+        }
+
+        // Menü açma ve kapama işlemleri
+        navItems.forEach(item => {
+            const menuId = item.dataset.id; // ID'yi data-id'den alıyoruz
+
+            item.addEventListener('mouseenter', function () {
+                showMenu(menuId); // Menü içeriğini güncelle ve aç
+            });
+
+            item.addEventListener('mouseleave', function () {
+                hideMenu(); // Menü kapanmasını geciktir
+            });
+        });
+
+        // Dropdown menüsüne gelince kapanmayı durdur
+        dropdownMenu.addEventListener('mouseenter', function () {
+            clearTimeout(timeoutId); // Kapanma zamanlayıcısını temizle
+            dropdownMenu.style.display = 'block'; // Menü açık kalmaya devam etsin
+        });
+
+        dropdownMenu.addEventListener('mouseleave', function () {
+            hideMenu(); // Fare menüden çıktığında kapanma başlasın
+        });
+    });
+</script>
+ 
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Django'dan gelen menü verileri
+    const menus = JSON.parse('{{ menus_json|escapejs }}');
+
+    // Modal referansları
+    const leftModal = new bootstrap.Modal(document.getElementById('leftModal'));
+    const secondLeftModal = new bootstrap.Modal(document.getElementById('secondLeftModal'));
+    const thirdLeftModal = new bootstrap.Modal(document.getElementById('thirdLeftModal'));
+
+    let selectedMainCategory = '';
+    let selectedSecondCategory = '';
+    // İlk menüyü oluştur
+    createMenu(Object.values(menus), document.querySelector('#mainMenu'), leftModal, secondLeftModal, 'secondMenu', 1);
+    
+    function createMenu(menuData, parentElement, modal, nextModal, nextMenuId, level) {
+        const ul = document.createElement('ul');
+        ul.className = 'nav flex-column';
+
+        menuData.forEach(category => {
+            const li = document.createElement('li');
+            li.className = 'nav-item border-bottom d-flex justify-content-between align-items-center ';
+            const link = document.createElement('a');
+            const arrow = document.createElement('i');
+            arrow.className = 'bi bi-chevron-right fs-4 me-3'
+            link.className = 'nav-link text-dark  py-2 mb-1 small fw-medium';
+            link.href = `/category/${category.slug}`;
+            link.textContent = category.name || category.title;            
+            link.dataset.toggle = 'submenu';            
+            link.dataset.level = level;
+            li.appendChild(link);
+            li.appendChild(arrow);
+            // Eğer items varsa, üçüncü modal için tıklama ekle
+            if (category.items && level === 2) {
+                li.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const thirdSubmenuContent = document.querySelector(`#${nextMenuId}`);
+                    thirdSubmenuContent.innerHTML = '';
+                    const selectedCategoryItem = document.querySelector('#selectedCategoryItem');
+
+                    if (selectedCategoryItem) {  // selectedCategoryHeader öğesinin var olup olmadığını kontrol et
+                        selectedSecondCategory = category.title;
+                        selectedCategoryItem.innerHTML = selectedSecondCategory;
+                        selectedCategoryItem.href = `/category/${category.slug}`;  // Href değerini atama
+                    } else {
+                        console.error('Selected category header not found!');
+                    }
+                    category.items.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'nav-item border-bottom d-flex justify-content-between align-items-center';
+                        
+                        const link = document.createElement('a');
+                        link.className = 'nav-link text-dark py-2 mb-1 small fw-medium';
+                        link.href = `/category/${item.slug}`;
+                        link.textContent = item.name;           
+                        
+                        // Hem link'e hem de arrow'a aynı davranışı vermek için li'ye event listener ekliyoruz
+                        li.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            window.location.href = `/category/${item.slug}`; // Linke tıklayınca yönlendirme
+                        });
+
+                        li.appendChild(link);
+                        thirdSubmenuContent.appendChild(li);
+                    });
+
+                    thirdLeftModal.show();  // Üçüncü modalı göster
+                });
+            }
+
+            // Eğer children varsa, ikinci modal için tıklama olayı ekleyin
+            if (category.children && level === 1) {
+            li.addEventListener('click', function (event) {
+                event.preventDefault();
+                modal.hide();  // Şu anki modalı gizle
+                
+                const selectedCategoryHeader = document.querySelector('#selectedCategoryHeader');
+                
+                if (selectedCategoryHeader) {  // selectedCategoryHeader öğesinin var olup olmadığını kontrol et
+                    selectedMainCategory = category.name;
+                    selectedCategoryHeader.innerHTML = selectedMainCategory;
+                    selectedCategoryHeader.href = `/category/${category.slug}`;  // Href değerini atama
+                } else {
+                    console.error('Selected category header not found!');
+                }
+
+                const nextSubmenuContent = document.querySelector(`#${nextMenuId}`);
+                nextSubmenuContent.innerHTML = '';
+
+                createMenu(category.children, nextSubmenuContent, nextModal, thirdLeftModal, 'thirdMenu', 2);  // İkinci modalı aç ve alt menüyü oluştur
+                nextModal.show();  // İkinci modalı göster
+            });
+        }
+
+            ul.appendChild(li);
+        });
+
+        parentElement.innerHTML = '';  // Temizle ve yeni menüyü ekle
+        parentElement.appendChild(ul);
+    }
+
+    
+
+    // İkinci menüye geri düğmesi
+    document.querySelector('#backButtonSecond').addEventListener('click', function () {
+        secondLeftModal.hide();
+        leftModal.show();
+    });
+
+    // Üçüncü menüye geri düğmesi
+    document.querySelector('#backButtonThird').addEventListener('click', function () {
+        thirdLeftModal.hide();
+        secondLeftModal.show();
+    });
+
+    // İkinci menüyü kapat
+    document.querySelector('#secondLeftModal .btn-close').addEventListener('click', function () {
+        secondLeftModal.hide();
+    });
+
+    // Üçüncü menüyü kapat
+    document.querySelector('#thirdLeftModal .btn-close').addEventListener('click', function () {
+        thirdLeftModal.hide();
+    });
+});
+</script>
+
+
+
+
+<!-- Navbar Scroll  -->
+<script>
+    let scrollTimeout;
+    let isMouseOverNavbar = false;
+    let isMouseOverMenu = false;
+
+function handleMouseOver() {
+    isMouseOverNavbar = true;
+    isMouseOverMenu = true;
+    const navbar = document.getElementById('navbar');
+    navbar.style.opacity = '1';
+    navbar.style.transform = 'translateY(0)';
+    clearTimeout(scrollTimeout);  // Kaybolma işlemini durdur
+}
+
+function handleMouseOut() {
+    isMouseOverNavbar = false;
+    isMouseOverMenu = false;
+    // Scroll 50'yi geçerse kaybolma işlemi yeniden başlasın
+    if (window.scrollY > 50) {
+        scrollTimeout = setTimeout(function() {
+            if (!isMouseOverNavbar && !isMouseOverMenu) {
+                const navbar = document.getElementById('navbar');
+                navbar.style.opacity = '0';
+                navbar.style.transform = 'translateY(-100%)';
+            }
+        }, 1000);  // 1 saniye bekleme süresi
+    }
+}
+
+// Mobil ve büyük ekranlar için farklı işlemler yapalım
+function handleScroll() {
+    const navbar = document.getElementById('navbar');
+    const navbarMenu = document.getElementById('dropdownMenu');
+    const NavbarMobile = document.getElementById('NavbarMobile');
+    const line = document.getElementById('line');
+    const leftModal = document.getElementById('leftModal');
+    const secondLeftModal = document.getElementById('secondLeftModal');
+    const thirdLeftModal = document.getElementById('thirdLeftModal');
+
+    // Mobil ekranlar için (991px ve altı)
+    if (window.innerWidth <= 991) {
+        if (window.scrollY > 50) {
+            line.style.display = 'none';
+            NavbarMobile.style.position = 'fixed';
+            NavbarMobile.style.zIndex = '2000';  // Daha yüksek z-index
+            NavbarMobile.style.backgroundColor = '#fff';
+            NavbarMobile.style.width = '100%';
+            NavbarMobile.style.top = '0px';
+            leftModal.style.zIndex = '2001';
+            secondLeftModal.style.zIndex = '2002';
+            thirdLeftModal.style.zIndex = '2003';
+
+            NavbarMobile.style.opacity = '1';
+            NavbarMobile.style.transform = 'translateY(0)';
+            NavbarMobile.style.transition = 'transform 0.5s, opacity 0.5s';
+
+            if (!isMouseOverNavbar && !isMouseOverMenu) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function() {
+                    NavbarMobile.style.opacity = '0';
+                    NavbarMobile.style.transform = 'translateY(-100%)'; 
+                }, 1000);
+            }
+        } else {
+            NavbarMobile.style.position = '';  
+            NavbarMobile.style.zIndex = '';
+            NavbarMobile.style.top = '';
+        }
+        
+        if (window.scrollY <= 50) {
+            NavbarMobile.style.opacity = '1';
+            NavbarMobile.style.transform = 'translateY(0)';
+            navbarMenu.style.marginTop = '-25px';
+            NavbarMobile.style.zIndex = '2000';
+            NavbarMobile.style.transition = 'transform 0.5s, opacity 0.5s';
+            clearTimeout(scrollTimeout);
+        }
+    } 
+    // Büyük ekranlar için (992px ve üzeri)
+    else {
+        if (window.scrollY > 50) {
+            navbar.style.position = 'fixed';  
+            navbar.style.zIndex = '2000';
+            navbar.style.backgroundColor = '#fff';
+            navbar.style.marginTop = '-25px';
+            navbar.style.width = '100%';
+            navbarMenu.style.marginTop = '-25px';
+
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.transition = 'transform 0.5s, opacity 0.5s';
+
+            if (!isMouseOverNavbar && !isMouseOverMenu) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function() {
+                    navbar.style.opacity = '0';
+                    navbar.style.transform = 'translateY(-100%)';
+                }, 1000);
+            }
+        } else {
+            navbar.style.backgroundColor = '';
+            navbar.style.position = 'relative';
+            navbar.style.marginTop = ''; 
+            navbar.style.zIndex = '2000';
+            navbarMenu.style.marginTop = '';
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.transition = 'transform 0.5s, opacity 0.5s';
+        }
+
+        if (window.scrollY <= 50) {
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateY(0)';
+            navbarMenu.style.marginTop = '-25px';
+            navbar.style.zIndex = '2000';
+            navbar.style.transition = 'transform 0.5s, opacity 0.5s';
+            clearTimeout(scrollTimeout);
+        }
+    }
+}
+
+// Site açıldığında handleScroll fonksiyonunu çalıştır
+document.addEventListener('DOMContentLoaded', function() {
+    handleScroll();  // Sayfa yüklendiğinde scroll olayını simüle et
+});
+
+// Scroll eventi için dinleyici ekleyelim
+window.addEventListener('scroll', handleScroll);
+
+// Navbar ve menu üzerinde mouseover ve mouseout eventlerini dinle
+const navbar = document.getElementById('navbar');
+const navbarMenu = document.getElementById('dropdownMenu');
+
+// Mouseover ve mouseout eventleri için handler'lar
+navbar.addEventListener('mouseover', handleMouseOver);
+navbar.addEventListener('mouseout', handleMouseOut);
+navbarMenu.addEventListener('mouseover', handleMouseOver);
+navbarMenu.addEventListener('mouseout', handleMouseOut);
+
+// Menü içindeki her bir eleman için mouseover ve mouseout eventlerini ekleyelim
+const menuItems = navbarMenu.querySelectorAll('*');
+menuItems.forEach(item => {
+    item.addEventListener('mouseover', handleMouseOver);
+    item.addEventListener('mouseout', handleMouseOut);
+});
+
+
+</script>
+
+
+
+
+
+

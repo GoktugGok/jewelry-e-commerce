@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* NAVBAR */
+
+
+#inform{
+    background-color: #FFCAD4;
+    font-family: 'Pandora Text', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.5;
+}
+
+#search input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

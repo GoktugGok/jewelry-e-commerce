@@ -1,0 +1,100 @@
+.textSize{
+    font-size: smaller;
+}
+.TextWeight{
+    font-weight: 700;
+}
+.price,.text-uppercase{
+    font-family: "Montserrat", sans-serif;
+}
+.cardAdd:hover{
+    background-color: #FFCAD4;
+    color: #000;
+    border: 1px solid #FFCAD4;
+}
+.accordion-button::after {
+    content: none;
+  }
+.symbol {
+    font-size: 1.5rem;
+}
+
+
+.carouselExampleComputer{
+    display: block;
+}
+
+#carouselExampleMobile,.thumbnail-container{
+    display: none !important;
+}
+
+.thumbnail-container .img-thumbnail {
+    transition: border 0.3s ease; /* Border geçişi için animasyon ekle */
+}
+
+.thumbnail-container .img-thumbnail.selected {
+    border: 2px solid black; /* Seçili thumbnail için mavi bir border ekleyelim */
+}
+ul.text-secondary {
+    list-style-type: disc !important;
+    padding-left: 20px !important; /* Sol boşluk */
+    font-size: small !important;
+}
+
+ul.text-secondary li {
+    font-size: 14px !important;
+    list-style-position: outside !important;
+}
+
+ul.text-secondary li::marker {
+    font-size: 9px !important; /* Noktaların boyutunu küçültelim */
+}
+.metal-checkbox {
+    border: 1px solid transparent; /* Normal görünüm */
+}
+.metal-checkbox.checked {
+    border: 1px solid rgb(14, 13, 13); /* Seçili görünüm */
+}
+
+@media only screen and (max-width: 1200px) {
+    .PriceM{
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+    .PriceMP{
+        margin-left: 70px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    select{
+        background-color: blue;
+    }
+    .PriceM{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    .Progress{
+        display: none;
+    }
+    .textSize {
+        width: 100%; /* Makes the textSize div full width */
+    }
+    
+    .PriceM {
+        flex-direction: column !important; /* Stack the elements vertically */
+        align-items: center !important; /* Center everything */
+        text-align: center; /* Center text inside the textSize div */
+    }
+
+    #carouselExampleMobile,.thumbnail-container{
+        display: block !important;
+    }
+    .carouselExampleComputer{
+        display: none;
+    }
+    .DetailTexts{
+        font-size: 14px;
+    }
+}

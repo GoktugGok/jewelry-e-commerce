@@ -1,0 +1,73 @@
+.sendMail{
+    font-family: "Montserrat", sans-serif;
+}
+.footer-link {
+    font-size: 0.8rem; /* Yazı boyutunu küçülttüm */
+    color: #747474; /* Daha açık bir siyah tonu, koyu gri */
+    text-decoration: none; /* Alt çizgi kalktı */
+    padding-top: 15px;
+}
+
+.footer-link:hover {
+    color: #000; /* Üzerine gelindiğinde tam siyah */
+}
+.footer{
+    margin-bottom: 200px;
+}
+@media (max-width: 1200px) {
+    .footerComputer{
+      display: none; /* 1200px üzeri ekranlarda footer gizlensin */
+    } 
+}
+.accordion-item,.accordion-button{
+    background-color: rgb(231, 229, 229);
+}
+.accordion-item {
+    border: none;
+    border-top: solid 1px black; /* Accordion item etrafındaki border'ı kaldırır */
+}
+
+.accordion-button {
+    background-color: transparent;
+    border: none; /* Butonun border'ını kaldırır */
+    box-shadow: none;
+    color: black;
+}
+
+.accordion-button:focus {
+    box-shadow: none; /* Tıklanınca oluşan kenar gölgesini kaldırır */
+    background-color: transparent;
+}   
+
+
+.accordion-body {
+    background-color: transparent;
+    border-top: none; /* Accordion body'sindeki üst kenar çizgisi kalkar */
+}
+
+.secondFooters{
+    margin-top: 150px;
+}
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    color: black;
+    box-shadow: none; /* Aktif olan butonun gölgesini kaldır */
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    background-color: transparent;
+    color: black;
+    outline: none; /* Tıkladığında mavi outline'ı kaldır */
+}
+
+.accordion-button:active {
+    background-color: transparent;
+    color: black;
+    border-color: transparent;
+    box-shadow: none; /* Aktif butonun mavi olmasını engeller */
+}
+
+.accordion-button:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Hover durumunda çok hafif bir renk değişimi */
+}

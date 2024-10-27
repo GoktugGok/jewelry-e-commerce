@@ -1,0 +1,325 @@
+/* Genel Ayarlar */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+#navbar {
+    transition: all 0.5s ease;
+}
+
+/* Input Focus Ayarları */
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Pink Line */
+#line {
+    background-color: #FFCAD4;
+}
+
+/* Hover Efekti */
+.hover-effect {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-effect::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #FFCAD4;
+    left: 50%;
+    bottom: -5px;
+    transition: all 0.3s;
+}
+
+.hover-effect:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* İkonlar */
+.icons {
+    text-decoration: none;
+}
+
+/* Menü Yazı Tipi */
+.menu li {
+    font-family: 'Pandora Text', Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Sabit dropdown menü computer */
+.dropdown-menu-custom {
+    display: none;
+    position: absolute;
+    top: 159px;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.dropdown-menu-custom ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dropdown-menu-custom ul li {
+    margin: 0 15px;
+}
+
+.dropdown-menu-custom ul li a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* Menü göstermek için hover durumunda */
+.nav-item:hover ~ .dropdown-menu-custom {
+    display: block;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    position: relative;
+    padding-bottom: 5px;
+    
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 13px;
+    width: 100%;
+    height: 2px;
+    background-color: pink;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0s ease;
+}
+
+.nav-item:hover .nav-link::after {
+    transform: scaleX(1);
+}
+
+/* Modal Menu Styles */
+.modal-open{
+    padding: 0px;
+}
+.modal.left .modal-dialog,
+.modal.second.left .modal-dialog,
+.modal.third.left .modal-dialog {
+    position: fixed;
+    margin: -1px;
+    padding: 0px;
+    width: 500px;
+    height: 100%;
+    transform: translate3d(-100%, 0, 0); /* Hide initially offscreen */
+}
+@media only screen and (max-width: 500px) {
+    .modal.left .modal-dialog,
+    .modal.second.left .modal-dialog,
+    .modal.third.left .modal-dialog {
+    width: 100%;
+    
+}
+}
+.modal.left .modal-content,
+.modal.second.left .modal-content,
+.modal.third.left .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.second.left .modal-body,
+.modal.third.left .modal-body {
+    padding: 15px;
+}
+
+/* Slide in from the left */
+.modal.left.fade .modal-dialog,
+.modal.second.left.fade .modal-dialog,
+.modal.third.left.fade .modal-dialog {
+    transform: translate3d(-100%, 0, 0);
+    transition: opacity 0.3s linear, transform 0.3s ease-out;
+}
+
+.modal.left.fade.show .modal-dialog,
+.modal.second.left.fade.show .modal-dialog,
+.modal.third.left.fade.show .modal-dialog {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Ensure submenu visibility */
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu .nav-link {
+    padding-left: 20px;
+}
+
+.nav-link.active {
+    background-color: #e6e6e6;
+}
+
+
+
+/* Search Modal */
+.modal.fullscreen .modal-dialog {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    max-width: none;
+}
+
+.modal.fullscreen .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+}
+
+.modal.fullscreen .modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal.fullscreen .modal-body {
+    overflow-y: auto;
+}
+
+/* Search finish */
+.modal.fullscreen.fade .modal-dialog {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.fullscreen.fade.show .modal-dialog {
+    transform: translateY(0);
+}
+
+/* Arama ve Sonuçlar */
+#search {
+    position: relative;
+}
+
+#searchInput:focus {
+    border-color: black !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#search-results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    z-index: 1000;
+    width: 360px;
+    height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Listeleme */
+.no-bullet {
+    list-style-type: none;
+}
+
+/* Kapsayıcı */
+.container {
+    max-width: 1410px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Ürün Detayları */
+.product-details,
+.category-details {
+    font-family: "Montserrat", sans-serif;
+    font-size: small;
+}
+
+.name {
+    font-weight: 400;
+    color: #000;
+}
+
+.relating-items {
+    font-weight: 500;
+    font-size: 13px;
+    background-color: #e6e6e6;
+    color: #000;
+}
+
+li .text-lines {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Menü İçeriği */
+#menu-content {
+    position: absolute;
+    bottom: 0;
+    display: inline-flex;
+}
+
+.menu-section {
+    width: 250px;
+    height: 250px;
+}
+
+.menu-item a {
+    color: #666;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+a.TextUnderLine:hover {
+    text-decoration: underline !important;
+    color: #000;
+}
+
+/* Sabit İletişim */
+.ss {
+    position: relative;
+    height: 100%;
+}
+
+/* Mobil İçin Ayarlar */
+@media only screen and (max-width: 1399px) {
+    .sykc {
+        font-size: 28px;
+    }
+}
+.inform{
+    margin: 0px;
+    padding: 0px;
+}

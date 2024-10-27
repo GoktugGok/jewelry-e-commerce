@@ -1,0 +1,358 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+<div class="container my-3 ">
+    <div class="PriceM d-flex align-items-center justify-content-center p-3 " style="background-color: #FFCAD4;">
+        <div class="textSize text-dark text-center me-3">
+            <div class="TextWeight text-line">
+                3500 TL’ye ulaştığında, senin için bir charm %50 indirimli.
+            </div>
+            <p><a class="text-decoration-underline text-dark" href="">Giriş yap veya kaydol.</a></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="prices">0,00 TL</div>
+                <div class="progress border-0 rounded-0 mx-2 p-0" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px; width: 150px;">
+                    <div class="progress-bar" ></div>
+                </div>
+            <div class="prices ms-2">3.500,00 TL</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container Progress p-0">
+  <nav class="PriceMP textSize" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb ms-md-3 mt-3 ">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}" class="text-decoration-none text-secondary medium small ">Ana Sayfa</a>
+        </li>
+        <div class="breadcrumb-item active text-dark" aria-current="page">
+          <div class="text-decoration-none d-flex  justify-content-start text-dark d-flex align-items-center mb-0 pb-4 small">
+            {% for page in page_hierarchy %}
+                {% if not forloop.first %}
+                    <div class="mx-2"> > </div> 
+                {% endif %}
+                <a 
+                  class="text-decoration-none {% if forloop.last %}text-dark{% else %}text-secondary{% endif %}" 
+                  href="{% url 'category' page.slug %}">{{ page.name }}
+                </a>
+            {% endfor %}
+          </div>
+        </div>
+      </ol>
+  </nav>
+</div>
+
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 col-md-7 mb-5">
+            <div class="carouselExampleComputer">
+              <div class="row">
+                <div class="col-6 mt-2">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                </div>
+                {% for image in product_images %}
+                  <div class="col-6 mt-2">
+                      <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid">
+                  </div>
+                {% endfor %}
+              </div> 
+            </div>
+            <div id="carouselExampleMobile" class="carousel slide ms-2" >
+              <div class="carousel-inner">
+                <div class="carousel-item active" >
+                  <img src="{{ product.image.url }}" class="d-block w-100" style="height: 350px;" alt="{{ product.name }}">
+                </div>
+                {% for image in product_images %}
+                  <div class="carousel-item">
+                    <img src="{{ image.image.url }}" class="d-block w-100" style="height: 350px;" alt="{{ image.title }}">
+                  </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleMobile" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleMobile" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <div class="thumbnail-container d-flex justify-content-center mt-3">
+              <div class="row">
+                <div class="col">
+                  <img src="{{ product.image.url }}" class="img-thumbnail " style="height: 80px; cursor: pointer;" data-bs-target="#carouselExampleMobile" data-bs-slide-to="0">
+                </div>
+                {% for image in product_images %}
+                  <div class="col">
+                    <img src="{{ image.image.url }}" class="img-thumbnail" style="height: 80px; cursor: pointer;" data-bs-target="#carouselExampleMobile" data-bs-slide-to="{{ forloop.counter }}">
+                  </div>
+                {% endfor %}
+
+                <!-- Daha fazla küçük resim eklenebilir -->
+              </div>
+            </div>
+
+              
+        </div>
+        <div class="col-lg-4 col-md-5">
+            <h3 class="fw-bold">{{product.name}}</h3>
+            <div class="price fw-medium mt-4">{{product.price}}TL</div>
+            <hr>
+            {% if product.family %}
+              <div class="fw-medium  mt-5 mb-1">
+                Metal: 
+                {% for metal in productDetails.metals %}
+                    {{ metal }}
+                {% endfor %}
+              </div>
+              <div class="d-flex">
+                {% for family in metals_set %}
+                <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                  <!-- Checkbox input gibi görünen bağlantı -->
+                  <a href="{% url 'product' family.slug %}" 
+                     class="form-check-input rounded-5 p-3 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}" 
+                     id="{{ family.name }}" 
+                     {% for metal in family.metals.all %} 
+                         style="background: url('{{ metal.image.url }}') no-repeat center center;" 
+                     {% endfor %}>
+                  </a>
+              </div>
+              
+                {% endfor %}
+              </div>
+            {% endif %}
+              
+            <button type="button" class="btn btn-outline-dark d-flex justify-content-center align-items-center w-100 p-2  rounded-1">
+                <i class="bi bi-geo-alt me-1"></i>
+                <div class="text-uppercase fw-normal">magazadan teslim</div>
+            </button>
+            <button type="button" class="cardAdd mt-4 btn btn-dark d-flex justify-content-center align-items-center w-100 p-2  rounded-1">
+                <div class="text-uppercase fw-normal">sepete ekle</div>
+            </button>
+            <a href="" class="text-decoration-none text-dark d-flex mt-3 ">
+                <i class="bi bi-heart me-2"></i>
+                <div class="text-decoration-underline small">Istek Listesine Kaydet</div>
+            </a>
+            <hr class="mt-5">
+
+            <div class="accordion bg-white border-0 rounded-0" id="accordionPanelsStayOpenExampleDetails">
+                <div class="accordion-item border-0 border-bottom bg-white">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button fs-5 toggle-symbol position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOneDetails" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                      URUN BILGILERI 
+                      <span class="symbol position-absolute end-0 me-4">+</span>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOneDetails" class="accordion-collapse  collapse ">
+                    <div class="accordion-body">
+                      <small class="m-0 p-0 text-secondary">
+                        {{product.description}}
+                      </small>
+                      <div class="row mt-5  pb-2 DetailTexts">
+                        <div class="col-6 small py-2">Uyumlu Parça</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for compatible in productDetails.compatibles %}
+                              {{ compatible }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Koleksiyon</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for collection in productDetails.collections %}
+                              {{ collection }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Taş</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for stone in productDetails.stones %}
+                              {{ stone }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Renk</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for color in productDetails.colors %}
+                              {{ color }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Temalar</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for theme in productDetails.themes %}
+                              {{ theme }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Ürün Türü</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for category in productDetails.categories %}
+                              {{ category }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Ürün</div>
+                        <div class=" col-6 small py-2 text-secondary">{{product.code}}</div>
+
+                        <div class="col-6 small py-2">Metal</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% if '925 ayar gümüş' in productDetails.metals and 'Pembe Altin Kaplama' in productDetails.metals %}
+                              Som gümüş ve 14 ayar Pembe altın kaplama benzersiz metal karışımı
+                            {% else %}
+                              {% for metal in productDetails.metals %}
+                                {{metal}}
+                              {% endfor %}
+                          {% endif %}
+
+                        </div>
+
+                        <div class="col-6 small py-2">Materyal Adı</div>
+                        <div class=" col-6 small py-2 text-secondary">
+                          {% for metalName in productDetails.metalNames %}
+                              {{ metalName }}
+                          {% endfor %}
+                        </div>
+
+                        <div class="col-6 small py-2">Boyutlar</div>
+                        <div class=" col-6 small py-2 text-secondary">{{ product.boyutlar|linebreaksbr }}</div>
+                        
+                        <div class="col-6 small py-2">Menşei</div>
+                        <div class=" col-6 small py-2 text-secondary">TH</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="accordion-item border-bottom bg-white">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fs-5 toggle-symbol position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwoDetails" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                      TESLIMAT VE IADE
+                      <span class="symbol position-absolute end-0 me-4">+</span>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseTwoDetails" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      <div class="d-flex">
+                        <div class="me-3">
+                          <i class="bi bi-truck fs-5"></i>
+                        </div>
+                        <div class="">
+                          <strong>2000 TL ve üzeri alışverişlerde ücretsiz kargo (1-3 gün)</strong>
+                          <div class="mt-2">
+                            <small class="text-secondary">• Teslimat Ücreti 79 TL</small>
+                          </div>
+                          <div class="mt-2">
+                            <small class="text-secondary fw-bolder">
+                              MAĞAZADAN TESLIM:
+                            </small>
+                          </div>
+                          <div class="mt-2">
+                            <small class="text-secondary">
+                              • Seçili mağazalarda ücretsiz teslimat <br>
+                              • 4 iş saati içerisinde teslime hazır 
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex mt-4">
+                        <div class="me-3">
+                          <i class="bi bi-arrow-left-right"></i>
+                        </div>
+                        <div class="">
+                          <strong class="">İadeler</strong>
+                          <ul class="text-secondary mt-2">
+                            <li>14 gün içerisinde iade</li>
+                            <li>Mağazadan Teslim siparişlerini yalnızca mağazadan iade edebilirsiniz.</li>
+                            <li>Adrese teslim siparişlerinizi mağazadan ya da kargo ile iade edebilirsiniz.</li>
+                            <li>Daha fazla iade bilgisi için buraya tıklayın</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="accordion-item border-bottom rounded-0  bg-white">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed fs-5 toggle-symbol position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThreeDetails" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                      UYUMLULUK
+                      <span class="symbol position-absolute end-0 me-4 ">+</span>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseThreeDetails" class="accordion-collapse show collapse">
+                    <div class="accordion-body">
+                      <div class="">
+                        <small>
+                          Lütfen sipariş vermeden önce charm, bileklik, kolye veya diğer charm taşıyıcıların uyumluluğunu kontrol edin.
+                        </small>
+                      </div>
+                      <div class="text-center small mt-2 ">
+                        <a href="#" class="text-dark">
+                          Hangi mücevher serisine sahibim?
+                        </a>
+                      </div>
+                      <div class="row mt-4 p-0" >
+                        <div class="col-4 p-1 " >
+                          <div class="rounded rounded-2" style="background-color: #e4e4e4;">
+                            <img class="img-fluid w-100" src="{% static 'image/Screenshot 2024-10-20 154031.png' %}" alt="">
+                            <div class=" text-center my-2">
+                              {% if 'Pandora Moments' in productDetails.compatibles %}
+                                <i class="bi bi-check2 text-success fs-3"></i>
+                              {% else %}
+                                <i class="bi bi-x-lg text-danger fs-3"></i>
+                              {% endif %}
+                            </div>
+                            <div class="text-center px-1 small pb-4">Pandora Moments</div>
+                          </div>
+                        </div>
+                        <div class="col-4 p-1 " >
+                          <div class="rounded rounded-2" style="background-color: #e4e4e4;">
+                            <img class="img-fluid w-100" src="{% static 'image/Screenshot 2024-10-20 154041.png' %}" alt="">
+                            <div class=" text-center my-2">
+                              {% if 'Pandora ME' in productDetails.compatibles %}
+                                <i class="bi bi-check2 text-success fs-3"></i>
+                              {% else %}
+                                <i class="bi bi-x-lg text-danger fs-3"></i>
+                              {% endif %}
+
+                            </div>
+                            <div class="text-center px-1 small pb-4">Pandora ME</div>
+                          </div>
+                        </div>
+                        <div class="col-4 p-1 " >
+                          <div class="rounded rounded-2" style="background-color: #e4e4e4;">
+                            <img class="img-fluid w-100" src="{% static 'image/Screenshot 2024-10-20 154049.png' %}" alt="">
+                            <div class=" text-center my-2">
+                              {% if 'Pandora Reflexions' in productDetails.compatibles %}
+                                <i class="bi bi-check2 text-success fs-3"></i>
+                              {% else %}
+                                <i class="bi bi-x-lg text-danger fs-3"></i>
+                              {% endif %}
+                            </div>
+                            <div class="text-center px-1 small pb-4">Pandora Reflexions</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+              
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/product.js' %}"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+{% endblock  %}

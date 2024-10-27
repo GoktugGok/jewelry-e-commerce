@@ -1,0 +1,873 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
+
+
+<div class="" style="background-color: rgb(241, 235, 235);">
+    <div class="container ">
+        <div class="py-5">
+            <h1 class="banner">{{ category.name }}</h1>
+            <p class="bannerD">Her görünümü tamamlayan, zarif charm ve yüzük çeşitlerimizi tamamlayan zarif bir aksesuar.</p>
+        </div>
+    </div>
+</div>
+<div class="container my-3 ">
+    <div class="PriceM d-flex align-items-center justify-content-center p-3 " style="background-color: #FFCAD4;">
+        <div class="textSize text-dark text-center me-3">
+            <div class="TextWeight text-line">
+                3500 TL’ye ulaştığında, senin için bir charm %50 indirimli.
+            </div>
+            <p><a class="text-decoration-underline text-dark" href="">Giriş yap veya kaydol.</a></p>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="prices">0,00 TL</div>
+                <div class="progress border-0 rounded-0 mx-2 p-0" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 5px; width: 150px;">
+                    <div class="progress-bar" ></div>
+                </div>
+            <div class="prices ms-2">3.500,00 TL</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container Progress p-0">
+    <nav class="PriceMP textSize" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb ms-md-3">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none text-secondary">Ana Sayfa</a></li>
+          <div class="breadcrumb-item active text-dark" aria-current="page">
+            {% if ParentDetail != None %}
+                <a class="text-decoration-none text-secondary" href="{% url 'category' ParentDetail.slug %}">{{ParentDetail}}</a>  > <a class="text-decoration-none text-dark" href="{% url 'category' category.slug %}">{{ category.name }}</a>
+            {% else %}
+                <a class="text-decoration-none text-dark" href="{% url 'category' category.slug %}">{{ category.name }}</a>
+            {% endif %}
+        </div>
+        </ol>
+      </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- For Mobile -->
+        <div class="col-12 CategoryMenusM">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <select class="s1 mb-4 ms-2 form-select rounded-0 border-1 " aria-label="Default select example">
+                            <option class="p-1">Trend Urunler</option>
+                            <option class="p-1" value="1">One</option>
+                            <option class="p-1" value="2">Two</option>
+                            <option class="p-1" value="3">Three</option>
+                        </select>
+                    </div> 
+                    <div class="col-6 ">
+                        <!-- Button trigger modal -->
+                        <div type="button" class="btn ms-0 w-100 border border-1 rounded-0 border-dark d-flex justify-content-center align-items-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="bi bi-sliders"></i>
+                            <div class="ms-2 FilterButton">FILTRE</div> 
+                        </div>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="footerMobile d-xl-none accordion border-none mx-2"  id="accordionPanelsStayOpenExample">
+                                        <div class="firstFooters ">
+                                            <!-- Kategoriler -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#CategorysM" aria-expanded="false" aria-controls="CategorysM">
+                                                        Kategoriler
+                                                    </button>
+                                                </h2>
+                                                <div id="CategorysM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class=" form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category1">
+                                                                <div class="d-flex ">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Category1">
+                                                                        Charm’lar  
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(45)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category2">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Category2">
+                                                                        Bileklikler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category3">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Category3">
+                                                                        Yuzukler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(3)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category4">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Category4">
+                                                                        Kolyeler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category5">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Category5">
+                                                                        Kupeler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Ile Uyumlu -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#compatibleM" aria-expanded="false" aria-controls="compatibleM">
+                                                        Ile Uyumlu
+                                                    </button>
+                                                </h2>
+                                                <div id="compatibleM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="">
+                                                                        Pandora Moments
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
+                                                                        Kupeler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
+                                                                        Kupeler
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Metal -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#MetalM" aria-expanded="false" aria-controls="MetalM">
+                                                        Metal
+                                                    </button>
+                                                </h2>
+                                                <div id="MetalM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Silver" style="background: url('/static/image/Silver.png') no-repeat center center;"type="checkbox" >
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Silver">
+                                                                        Silver
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="goldImg" style="background: url('/static/image/Gold.png') no-repeat center center;"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="goldImg">
+                                                                        Gold
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="twoTone" style="background: url('/static/image/twoTone.png') no-repeat center center; transform: rotate(45deg);" type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="twoTone">
+                                                                        Iki Tonlu
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: url('/static/image/Pandora Rose.png') no-repeat center center;"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                                                                        Pembe Altin Kaplama
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Renk -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#ColorsM" aria-expanded="false" aria-controls="ColorsM">
+                                                        Renk
+                                                    </button>
+                                                </h2>
+                                                <div id="ColorsM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: white;"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                                                                        Renk Yok
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(167, 0, 0);"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                                                                        Kirmizi
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(0, 0, 163);"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                                                                        Mavi
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: black;"type="checkbox">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                                                                        Siyah
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(2)</div>
+                                                                </div>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Koleksiyon -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#CollectionM" aria-expanded="false" aria-controls="CollectionM">
+                                                        Koleksiyon
+                                                    </button>
+                                                </h2>
+                                                <div id="CollectionM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Temalar -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#TemaM" aria-expanded="false" aria-controls="TemaM">
+                                                        Temalar
+                                                    </button>
+                                                </h2>
+                                                <div id="TemaM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    Charm’lar (45)
+                                                                </label>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Bedenler -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#SizeM" aria-expanded="false" aria-controls="SizeM">
+                                                        Bedenler
+                                                    </button>
+                                                </h2>
+                                                <div id="SizeM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="row mt-3 g-3 pb-3">
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input d-none Size" id="size1" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">tek beden</div>
+                                                                </label>
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">48</div>
+                                                                </label>
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">42</div>
+                                                                </label>
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input Size d-none Size" id="size1" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">tek beden</div>
+                                                                </label>
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">48</div>
+                                                                </label>
+                                                                <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                                                                    <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
+                                                                    <div class="box text-center">42</div>
+                                                                </label>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Fiyatlar -->
+                                            <div class="accordion-item rounded-0 border-0 border-bottom  border-dark">
+                                                <h2 class="accordion-header " >
+                                                    <button class="accordion-button collapsed rounded-0 border-bottom bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#PricesM" aria-expanded="false" aria-controls="PricesM">
+                                                        Fiyatlar
+                                                    </button>
+                                                </h2>
+                                                <div id="PricesM" class="accordion-collapse collapse border-0 bg-white">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-unstyled">
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <div class="d-flex">
+                                                                    <label class="form-check-label ms-2 mt-1 Text small" for="flexCheckDefault">
+                                                                        750-1000TL 
+                                                                    </label>
+                                                                    <div class="ms-1 mt-1 small">(1)</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault2">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    750-1000 TL (1)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    750-1000TL (1)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 Text" for="flexCheckDefault">
+                                                                    750-1000TL (1)
+                                                                </label>
+                                                            </div>
+                                                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                                                                <label class="form-check-label ms-2 " for="flexCheckDefault">
+                                                                    750-1000 TL (1)
+                                                                </label>
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" py-2 modal-footer d-flex justify-content-between align-items-center" style="background-color: rgb(236, 236, 236);">
+                                    <div>54 Sonuc</div>
+                                    <button id="FiltersButtonM" class="btn btn-dark rounded-0 FilterButton small p-1" style="width: 200px; "data-bs-dismiss="modal">UYGULA</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="filtersM" id="filtersM">
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="categoryTitle ">Uygulanan Filtreler</h6>
+                                <a id="FilterAllDeleteM" class="text-dark small">Tum filtreleri temizle</a>
+                            </div>
+                            <div class="row d-flex mb-5 mt-2 " id="filterListM">
+                            </div>
+            
+                       </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-end small mb-3">{{total}} Sonuc</div>
+        <div class="col-lg-3 CategoryMenusC">
+            <select class="s1 mb-4 form-select rounded-0 border-1 " aria-label="Default select example">
+                <option class="p-1">Open this select menu</option>
+                <option class="p-1" value="1">One</option>
+                <option class="p-1" value="2">Two</option>
+                <option class="p-1" value="3">Three</option>
+            </select>
+           <div class="filters" id="filters">
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h6 class="categoryTitle ">Uygulanan Filtreler</h6>
+                    <a id="FilterAllDeleteC" class="text-dark small" style="cursor: pointer;">Tum filtreleri temizle</a>
+                </div>
+                <div class="row d-flex mb-5 mt-2 " id="filterList">
+                    <!-- <div class="col-4 d-flex align-items-center border border-1 rounded-5 px-2">
+                        <div class="">Charmlar</div>
+                        <i class="btn p-0 m-0 bi bi-x ms-2"></i>
+                    </div> -->
+                </div>
+
+           </div>
+           <!-- {% for category_hierarch in category_hierarchy %}
+                <hr class="mt-5">
+                <h6 class="categoryTitle mt-4">{{ category_hierarch.parent_name }}</h6>
+                <div class="form-check my-3">
+                    {% for child in category_hierarch.children %}
+                        {% if child.image and not child.color and not child.size %}
+                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                {% if child.slug == 'iki-tonlu' %}
+                                    <input class="form-check-input rounded-5 p-3 shadow" 
+                                        id="{{ child.name }}" 
+                                        style="background: url('{{ child.image.url }}') no-repeat center center; transform: rotate(45deg);" 
+                                        type="checkbox">
+                                {% else %}
+                                    <input class="form-check-input rounded-5 p-3 shadow" 
+                                        id="{{ child.name }}" 
+                                        style="background: url('{{ child.image.url }}') no-repeat center center;" 
+                                        type="checkbox">
+                                {% endif %}
+                                <div class="d-flex">
+                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
+                                        {{ child.name }}
+                                    </label>
+                                    <div class="ms-1 mt-1 small">(2)</div>
+                                </div>
+                            </div>
+                        {% elif child.color and not child.image and not child.size %}
+                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                <input class="form-check-input rounded-5 p-3 shadow" id="{{ child.name }}" style="background: {{ child.color }};" type="checkbox">
+                                <div class="d-flex">
+                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
+                                        {{ child.name }}
+                                    </label>
+                                    <div class="ms-1 mt-1 small">(2)</div>
+                                </div>
+                            </div>
+                        {% elif child.size and not child.image and not child.color %}
+                            <label class="size-label ms-0 btn btn-outline-dark rounded-0 border border-1 mt-2">
+                                <input type="checkbox" class="form-check-input d-none Size" id="{{child.size}}" onclick="toggleCheckbox(this)">
+                                <div class="box text-center p-1">{{child.size}}</div>
+                            </label>
+                        {% elif child.price  %}
+                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="{{child.price}}">
+                                <div class="d-flex">
+                                    <label class="form-check-label ms-2 mt-1 Text small" for="{{child.price}}">
+                                        {{child.price}} 
+                                    </label>
+                                    <div class="ms-1 mt-1 small">(1)</div>
+                                </div>
+                            </div>    
+                        {% elif not child.image and not child.color and not child.size and not child.prize %}
+                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="{{ child.name }}">
+                                <div class="d-flex">
+                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
+                                        {{ child.name }} 
+                                    </label>
+                                    <div class="ms-1 mt-1 small">(45)</div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %} -->
+            
+
+
+            <!-- <h6 class="categoryTitle mt-4">Kategoriler</h6>
+
+            <div class="form-check my-3">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class=" form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category1">
+                    <div class="d-flex ">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Category1">
+                            Charm’lar  
+                        </label>
+                        <div class="ms-1 mt-1 small">(45)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category2">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Category2">
+                            Bileklikler
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category3">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Category3">
+                            Yuzukler
+                        </label>
+                        <div class="ms-1 mt-1 small">(3)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category4">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Category4">
+                            Kolyeler
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category5">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Category5">
+                            Kupeler
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5">
+             Ile Uyumlu 
+            <h6 class="categoryTitle mt-4">Ile Uyumlu</h6>
+
+            <div class="form-check my-3">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="">
+                            Pandora Moments
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
+                            Kupeler
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
+                            Kupeler
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+            </div> 
+
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Metal</h6>
+
+            <div class=" my-3"> 
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Silver" style="background: url('/static/image/Silver.png') no-repeat center center;"type="checkbox" >
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Silver">
+                            Silver
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="goldImg" style="background: url('/static/image/Gold.png') no-repeat center center;"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="goldImg">
+                            Gold
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="twoTone" style="background: url('/static/image/twoTone.png') no-repeat center center; transform: rotate(45deg);" type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="twoTone">
+                            Iki Tonlu
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: url('/static/image/Pandora Rose.png') no-repeat center center;"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                            Pembe Altin Kaplama
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Renk</h6>
+
+            <div class=" my-3">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: white;"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                            Renk Yok
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(167, 0, 0);"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                            Kirmizi
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(0, 0, 163);"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                            Mavi
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: black;"type="checkbox">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
+                            Siyah
+                        </label>
+                        <div class="ms-1 mt-1 small">(2)</div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Koleksiyon</h6>
+            <div class="form-check my-3">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+            </div>
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Temalar</h6>
+            <div class="form-check my-3">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        Charm’lar (45)
+                    </label>
+                </div>
+            </div>        
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Beden</h6>
+            <div class="container">
+                <div class="row mt-3 g-3 pb-3">
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input d-none Size" id="size1" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">tek beden</div>
+                    </label>
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">48</div>
+                    </label>
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">42</div>
+                    </label>
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input Size d-none Size" id="size1" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">tek beden</div>
+                    </label>
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">48</div>
+                    </label>
+                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
+                        <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
+                        <div class="box text-center">42</div>
+                    </label>
+                </div>
+            </div> 
+            <hr class="mt-5">
+            <h6 class="categoryTitle mt-4">Fiyat</h6>
+            <div class="form-check my-3 mb-5">
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <div class="d-flex">
+                        <label class="form-check-label ms-2 mt-1 Text small" for="flexCheckDefault">
+                            750-1000TL 
+                        </label>
+                        <div class="ms-1 mt-1 small">(1)</div>
+                    </div>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault2">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        750-1000 TL (1)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        750-1000TL (1)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 Text" for="flexCheckDefault">
+                        750-1000TL (1)
+                    </label>
+                </div>
+                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
+                    <label class="form-check-label ms-2 " for="flexCheckDefault">
+                        750-1000 TL (1)
+                    </label>
+                </div>
+            </div>-->
+        </div>
+        <div class="col-lg-9 mb-3">
+            <div class="row">
+                {% for product in products %}
+                    <a href="{% url 'product' product.slug %}" class="col-sm-4 col-6 text-decoration-none mb-4">
+                        <div class="position-relative s1">
+                            <div class="position-absolute top-0 end-0 me-3 mt-2">
+                                <i class="bi bi-heart text-dark" id="heart"></i>
+                            </div>
+                            <img src="{{product.image.url}}" alt="" class="img-fluid">
+                            <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                        </div>
+                        <div class="s2 mt-2">
+                            <!-- <p class="m-0 s2 text-secondary">YENI</p> -->
+                            <p class="m-0 s2 text-dark mb-1">{{product.name}}</p>
+                            <div class="m-0 s2 price mt-1 text-dark">{{product.price}} TL</div>
+                        </div>
+                    </a>
+                {% endfor %}
+                <div class="col-sm-4 col-6">
+                    <div class="position-relative s1">
+                        <div class="position-absolute top-0 end-0 me-3 mt-2">
+                            <i class="bi bi-heart text-dark" id="heart"></i>
+                        </div>
+                        <img src="{% static 'image/YProduct.png' %}" alt="" class="img-fluid ">
+                        <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                    </div>
+                    <div class="s2 mt-2">
+                        <p class="m-0 s2 text-secondary">YENI</p>
+                        <p class="m-0 s2 text-dark mb-1">Işıltılı Yin&Yang Mini Sallantılı Charm</p>
+                        <div class="m-0 s2 price mt-1">1.059,00 TL</div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-6">
+                    <div class="position-relative s1">
+                        <div class="position-absolute top-0 end-0 me-3 mt-2">
+                            <i class="bi bi-heart text-dark" id="heart"></i>
+                        </div>
+                        <img src="{% static 'image/YProduct.png' %}" alt="" class="img-fluid ">
+                        <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                    </div>
+                    <div class="s2 mt-2">
+                        <p class="m-0 s2 text-secondary">YENI</p>
+                        <p class="m-0 s2 text-dark mb-1">Işıltılı Yin&Yang Mini Sallantılı Charm</p>
+                        <div class="m-0 s2 price mt-1">1.059,00 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/category.js' %}"></script>
+{% endblock  %}
+

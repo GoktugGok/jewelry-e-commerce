@@ -1,0 +1,146 @@
+.category{
+    font-size: small;
+}
+.text{
+    font-size: 74px;
+    width: 50px;
+}
+.position-relative {
+position: relative;
+}
+
+.card-img-overlay {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0;
+}
+
+.card-img-overlay h1,
+.card-img-overlay button {
+margin: 0;
+}
+
+.card-img-overlay h1 {
+font-size: 3vw; /* Adjust size dynamically */
+margin-bottom: 1rem;
+}
+
+.card-img-overlay button {
+
+padding: 0.5rem 2rem;
+}
+.full-screen-image {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Resmin içeriğini koruyarak alanı doldurmasını sağlar */
+position: absolute; /* Konumlandırma için */
+top: 0;
+left: 0;
+}
+.mainTitle{
+    font-family: "Montserrat", sans-serif;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    top: 50%; /* Yüksekliğin ortasına yerleştir */
+    transform: translateY(-50%); /* Tam ortalamak için yukarı kaydır */
+    color: #fff; /* Buton rengini ayarlamak için */
+    z-index: 10; /* Diğer içeriklerin üstünde görünmesi için */
+    width: 30px; /* Buton boyutunu küçülttüm */
+    height: 30px; /* Buton boyutunu küçülttüm */
+}
+
+.swiper-button-prev {
+    left: 10px; /* Sol kenardan mesafe */
+}
+
+.swiper-button-next {
+    right: 10px; /* Sağ kenardan mesafe */
+}
+
+/* Ekstra stil ayarları */
+.heart-icon {
+    top: 10px; /* Üstten mesafe ayarı */
+    right: 10px; /* Sağdan mesafe ayarı */
+    font-size: 20px; /* Kalp simgesinin boyutu */
+    z-index: 10; /* Diğer öğelerin üstünde görünmesi için */
+}
+
+.swiper-pagination-bullet {
+    background: black !important; /* Siyah arka plan rengi */
+}
+
+.swiper-pagination-bullet-active {
+    background: black !important; /* Aktif bullet için beyaz arka plan */
+}
+
+.Beloves p{
+    font-family: "Montserrat", sans-serif;
+}
+@media (max-width: 555px) {
+    .Beloves p{
+        font-size: 14px;
+    }
+    .s3 {
+        font-size: 5px;
+    }
+}
+@media (min-width: 970px) {
+.text{
+    font-size: 74px;
+    width: auto;
+}
+.mainMenu img{
+    height: 150px;
+    width: 100%;
+}
+}
+@media (max-width: 400px) {
+.MenuName{
+    font-size: 13px;
+}
+.mainMenu img{
+    height: 80px;
+    width: 100%;
+}
+}
+.specials{
+    margin-top: 120px;
+}
+.mainTitle{
+    margin-top: 70px;
+}
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+.card-img-overlay h1 {
+    font-size: 6vw;
+}
+.card-img-overlay button {
+    font-size: 3.5vw;
+}
+.title{
+    font-size: 23px;
+    margin: 0px;
+    padding: 0px;
+}
+.specials{
+    margin-top: 20px;
+}
+.mainTitle{
+    margin-top: 40px;
+}
+}
+
+
+
+
+
