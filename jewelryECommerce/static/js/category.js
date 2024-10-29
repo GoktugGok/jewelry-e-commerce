@@ -1,36 +1,90 @@
 
-var offheart = document.getElementById('heart');
-    
-offheart.addEventListener("click", function(){
-    // Kalp dolu ve boş ikonları arasında geçiş yap
-    if (offheart.classList.contains('bi-heart')) {
-        offheart.classList.remove('bi-heart'); // Boş kalp sınıfını kaldır
-        offheart.classList.add('bi-heart-fill'); // Dolu kalp sınıfını ekle
-    } else {
-        offheart.classList.remove('bi-heart-fill'); // Dolu kalp sınıfını kaldır
-        offheart.classList.add('bi-heart'); // Boş kalp sınıfını ekle
-    }
+const hearts = document.querySelectorAll('[id^="heart-"]');
+
+hearts.forEach((heart) => {
+    heart.addEventListener("click", function(event) {
+        const productId = heart.id;
+        event.stopPropagation();
+        if (heart.classList.contains('bi-heart')) {
+            heart.classList.remove('bi-heart'); 
+            heart.classList.add('bi-heart-fill');
+            setCookie(productId, 'filled', 7);
+        } else {
+            heart.classList.remove('bi-heart-fill');
+            heart.classList.add('bi-heart');
+            setCookie(productId,'empty',-1);
+        }
+    });
 });
 
-    function toggleCheckbox(element) {
-        // Label elementine ulaşmak için parentNode kullanıyoruz
-        const label = element.parentNode;
-        // Eğer checkbox seçiliyse checked class'ı ekle, değilse kaldır
-        if (element.checked) {
-            label.classList.add('checked');
-        } else {
-            label.classList.remove('checked');
+function setCookie(name,value,days){
+    const expires = days ? `; expires=${new Date(Date.now() + days * 864e5).toUTCString()}` : '';
+    document.cookie = `${name}=${value}${expires}; path=/`;
+}
+
+window.onload = function(){
+    const hearts = document.querySelectorAll('[id^="heart-"]');
+
+    hearts.forEach((heart) => {
+        const cookieValue = getCookie(heart.id);
+        if(cookieValue === 'filled'){
+            heart.classList.remove('bi-heart');
+            heart.classList.add('bi-heart-fill');
+        }else{
+            heart.classList.remove('bi-heart-fill');
+            heart.classList.add('bi-heart');
+        }
+    });
+}
+function getCookie(name){
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+function changeMainImage(productId, newImageUrl, element,check) {
+    const mainImage = document.getElementById(`product-image-${productId}`);
+    if (mainImage) {
+        if (!mainImage.dataset.originalSrc) {
+            mainImage.dataset.originalSrc = mainImage.src;
+        }
+        mainImage.src = newImageUrl; 
+        
+        if (check) { 
+            console.log(check)
+            check.classList.add('checked');
         }
     }
-        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
-        checkbox.addEventListener('change', (event) => {
-        if (event.target.checked) {
-            console.log(`${event.target.nextElementSibling.textContent.trim()} selected!`);
-        } else {
-                console.log(`${event.target.nextElementSibling.textContent.trim()} deselected!`);
-            }
-        });
+}
+function resetMainImage(productId, element,check) {
+    const mainImage = document.getElementById(`product-image-${productId}`);
+    if (mainImage && mainImage.dataset.originalSrc) {
+        mainImage.src = mainImage.dataset.originalSrc; 
+        
+        if (check) { 
+            console.log(element)
+            check.classList.remove('checked'); 
+        }
+    }
+}
+
+
+function toggleCheckbox(element) {
+    const label = element.parentNode;
+    if (element.checked) {
+        label.classList.add('checked');
+    } else {
+        label.classList.remove('checked');
+    }
+}
+    document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', (event) => {
+    if (event.target.checked) {
+        console.log(`${event.target.nextElementSibling.textContent.trim()} selected!`);
+    } else {
+            console.log(`${event.target.nextElementSibling.textContent.trim()} deselected!`);
+        }
     });
+});
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const filterList = document.getElementById('filterList');
 const filterContainer = document.getElementById('filters');

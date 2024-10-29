@@ -162,71 +162,92 @@
                       <div class="row mt-5  pb-2 DetailTexts">
                         <div class="col-6 small py-2">Uyumlu Parça</div>
                         <div class=" col-6 small py-2 text-secondary">
-                          {% for compatible in productDetails.compatibles %}
-                              {{ compatible }}
-                          {% endfor %}
+                              {% if 'Pandora Moments' in productDetails.compatibles and 'Pandora ME' in productDetails.compatibles %}
+                                Pandora ME/Moments
+                              {% else %}
+                                {% for compatible in productDetails.compatibles %}
+                                  {{ compatible }}
+                                {% endfor %}
+                              {% endif %}
                         </div>
 
-                        <div class="col-6 small py-2">Koleksiyon</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for collection in productDetails.collections %}
-                              {{ collection }}
-                          {% endfor %}
-                        </div>
+                        {% if productDetails.collections %}
+                          <div class="col-6 small py-2">Koleksiyon</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for collection in productDetails.collections %}
+                                {{ collection }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
-                        <div class="col-6 small py-2">Taş</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for stone in productDetails.stones %}
-                              {{ stone }}
-                          {% endfor %}
-                        </div>
+                        {% if productDetails.stones %}
+                          <div class="col-6 small py-2">Taş</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for stone in productDetails.stones %}
+                                {{ stone }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
-                        <div class="col-6 small py-2">Renk</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for color in productDetails.colors %}
-                              {{ color }}
-                          {% endfor %}
-                        </div>
+                        {% if productDetails.colors %}
+                          <div class="col-6 small py-2">Renk</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for color in productDetails.colors %}
+                                {{ color }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
-                        <div class="col-6 small py-2">Temalar</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for theme in productDetails.themes %}
-                              {{ theme }}
-                          {% endfor %}
-                        </div>
+                        {% if productDetails.themes %}
+                          <div class="col-6 small py-2">Temalar</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for theme in productDetails.themes %}
+                                {{ theme }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
-                        <div class="col-6 small py-2">Ürün Türü</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for category in productDetails.categories %}
-                              {{ category }}
-                          {% endfor %}
-                        </div>
+                        {% if productDetails.categories %}
+                          <div class="col-6 small py-2">Ürün Türü</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for category in productDetails.categories %}
+                                {{ category }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
-                        <div class="col-6 small py-2">Ürün</div>
-                        <div class=" col-6 small py-2 text-secondary">{{product.code}}</div>
-
-                        <div class="col-6 small py-2">Metal</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% if '925 ayar gümüş' in productDetails.metals and 'Pembe Altin Kaplama' in productDetails.metals %}
-                              Som gümüş ve 14 ayar Pembe altın kaplama benzersiz metal karışımı
-                            {% else %}
-                              {% for metal in productDetails.metals %}
-                                {{metal}}
-                              {% endfor %}
-                          {% endif %}
-
-                        </div>
-
-                        <div class="col-6 small py-2">Materyal Adı</div>
-                        <div class=" col-6 small py-2 text-secondary">
-                          {% for metalName in productDetails.metalNames %}
-                              {{ metalName }}
-                          {% endfor %}
-                        </div>
-
-                        <div class="col-6 small py-2">Boyutlar</div>
-                        <div class=" col-6 small py-2 text-secondary">{{ product.boyutlar|linebreaksbr }}</div>
+                        {% if product.code %}
+                          <div class="col-6 small py-2">Ürün</div>
+                          <div class=" col-6 small py-2 text-secondary">{{product.code}}</div>
+                        {% endif %}
                         
+                        {% if productDetails.metals %}
+                          <div class="col-6 small py-2">Metal</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% if '925 ayar gümüş' in productDetails.metals and 'Pembe Altin Kaplama' in productDetails.metals %}
+                                Som gümüş ve 14 ayar Pembe altın kaplama benzersiz metal karışımı
+                              {% else %}
+                                {% for metal in productDetails.metals %}
+                                  {{metal}}
+                                {% endfor %}
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        
+                        {% if productDetails.metalNames %}
+                          <div class="col-6 small py-2">Materyal Adı</div>
+                          <div class=" col-6 small py-2 text-secondary">
+                            {% for metalName in productDetails.metalNames %}
+                                {{ metalName }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+
+                        {% if product.boyutlar %}
+                          <div class="col-6 small py-2">Boyutlar</div>
+                          <div class=" col-6 small py-2 text-secondary">{{ product.boyutlar|linebreaksbr }}</div>
+                        {% endif %}
+
                         <div class="col-6 small py-2">Menşei</div>
                         <div class=" col-6 small py-2 text-secondary">TH</div>
                       </div>

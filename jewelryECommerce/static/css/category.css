@@ -61,7 +61,13 @@
 .CategoryMenusM{
     display: none;
 }
-
+.metal-checkbox {
+    border: 1px solid transparent; /* Normal görünüm */
+    padding: 12px;
+}
+.metal-checkbox.checked {
+    border: 1px solid rgb(14, 13, 13); /* Seçili görünüm */
+}
 
 @media only screen and (max-width: 1200px) {
     .PriceM{

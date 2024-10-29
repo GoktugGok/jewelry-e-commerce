@@ -23,10 +23,19 @@ def category(request, category_slug):
     sizeMenus = Size.objects.all()
     themeMenus = Theme.objects.all()
 
-    products = Product.objects.filter(mainCategories__slug=category_slug)
+    products = Product.objects.filter(mainCategories__slug=category_slug,available=True)
     total = products.count()
 
-    print(total)
+    metals_set = set()
+    for product in products:
+        if product.family.exists():
+            family_name = product.family.first().name
+            family_products = Product.objects.filter(family__name=family_name)
+            
+            for family_product in family_products:
+                metals_set.add(family_product)
+                print(family_product.metals.all())
+
     context = {
         'menus_json': json.dumps(menus_json),  
         'menu_items': menu_items, 
@@ -41,7 +50,8 @@ def category(request, category_slug):
         'sizeMenus':sizeMenus,
         'themeMenus':themeMenus,
         'products':products,
-        'total':total
+        'total':total,
+        'metals_set':metals_set
     }
     
     return render(request, 'category.html', context)

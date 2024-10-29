@@ -821,21 +821,46 @@
         <div class="col-lg-9 mb-3">
             <div class="row">
                 {% for product in products %}
-                    <a href="{% url 'product' product.slug %}" class="col-sm-4 col-6 text-decoration-none mb-4">
-                        <div class="position-relative s1">
-                            <div class="position-absolute top-0 end-0 me-3 mt-2">
-                                <i class="bi bi-heart text-dark" id="heart"></i>
+                    <div class="col-sm-4 col-6 text-decoration-none mb-4">
+                        <div class="position-relative s1 mb-3">
+                            <div class="position-absolute top-0 end-0 me-3 mt-2" style="cursor: pointer;">
+                                <i class="bi bi-heart text-dark" id="heart-{{ product.id }}"></i>
                             </div>
-                            <img src="{{product.image.url}}" alt="" class="img-fluid">
-                            <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                            <a href="{% url 'product' product.slug %}" id="image-container-{{ product.id }}">
+                                <img src="{{ product.image.url }}" alt="" class="img-fluid main-image" id="product-image-{{ product.id }}">
+                                <div class="ShowDetails position-absolute bottom-0 start-50 translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                            </a>
                         </div>
-                        <div class="s2 mt-2">
-                            <!-- <p class="m-0 s2 text-secondary">YENI</p> -->
-                            <p class="m-0 s2 text-dark mb-1">{{product.name}}</p>
-                            <div class="m-0 s2 price mt-1 text-dark">{{product.price}} TL</div>
+
+                        <!-- Varyasyonları listeliyoruz -->
+                        <div class="d-flex p-0">
+                            {% if product.family.all %}
+                                {% for family in metals_set %}
+                                    {% for metal in family.metals.all %}
+                                        <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                                            <a href="{% url 'product' family.slug %}"
+                                            class="form-check-input rounded-5 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}"
+                                            id="{{ family.name }}"
+                                            style="background: url('{{ metal.image.url }}') no-repeat center center;"
+                                            onmouseover="changeMainImage('{{ product.id }}', '{{ family.image.url }}', '{{ family.name }}', this)"
+                                            onmouseout="resetMainImage('{{ product.id }}', '{{ product.image.url }}', this)">
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
                         </div>
-                    </a>
+
+                        <!-- Ürün bilgileri -->
+                        <div class="s2 mb-3">
+                            <a href="{% url 'product' product.slug %}" class="text-decoration-none">
+                                <p class="m-0 s2 text-dark mb-1">{{ product.name }}</p>
+                                <div class="m-0 s2 price mt-1 text-dark">{{ product.price }} TL</div>
+                            </a>
+                        </div>
+                    </div>
                 {% endfor %}
+
                 <div class="col-sm-4 col-6">
                     <div class="position-relative s1">
                         <div class="position-absolute top-0 end-0 me-3 mt-2">

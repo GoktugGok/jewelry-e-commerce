@@ -19,9 +19,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
-    active = models.BooleanField(default=False)  # Active alanı
     mainCategories = models.ManyToManyField(MenuItem,related_name='MainCategoriesProducts',blank=True)
-
+    stock = models.IntegerField(default=0)
     categories = models.ManyToManyField(Category, related_name='products', blank=True)
     compatibles = models.ManyToManyField(Compatible, related_name='products', blank=True)
     stones = models.ManyToManyField(Stones,related_name='products', blank=True)
