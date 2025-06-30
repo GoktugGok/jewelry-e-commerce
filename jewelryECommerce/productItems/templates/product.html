@@ -59,7 +59,7 @@
             <div class="carouselExampleComputer">
               <div class="row">
                 <div class="col-6 mt-2">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid" id="product-image-{{ product.id }}">
                 </div>
                 {% for image in product_images %}
                   <div class="col-6 mt-2">
@@ -107,28 +107,42 @@
         </div>
         <div class="col-lg-4 col-md-5">
             <h3 class="fw-bold">{{product.name}}</h3>
-            <div class="price fw-medium mt-4">{{product.price}}TL</div>
+            <div class="price fw-medium mt-4" id="product-price-{{ product.id }}">{{product.price}}TL</div>
             <hr>
             {% if product.family %}
-              <div class="fw-medium  mt-5 mb-1">
-                Metal: 
-                {% for metal in productDetails.metals %}
+              <div class="fw-medium d-flex mt-5 mb-1">
+                <div class="me-2">Metal: </div>
+                <div class="" id="product-metal-name-{{product.id}}">
+                  {% for metal in productDetails.metals %}
                     {{ metal }}
-                {% endfor %}
+                  {% endfor %}
+                </div>
               </div>
               <div class="d-flex">
                 {% for family in metals_set %}
-                <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
-                  <!-- Checkbox input gibi görünen bağlantı -->
-                  <a href="{% url 'product' family.slug %}" 
-                     class="form-check-input rounded-5 p-3 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}" 
-                     id="{{ family.name }}" 
-                     {% for metal in family.metals.all %} 
-                         style="background: url('{{ metal.image.url }}') no-repeat center center;" 
-                     {% endfor %}>
-                  </a>
-              </div>
-              
+                  {% for metal in family.metals.all %}
+                    {% if product.name == family.name %}
+                      <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                        <!-- Checkbox input gibi görünen bağlantı -->
+                        <a href="{% url 'product' family.slug %}" 
+                          class="form-check-input rounded-5 p-3 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}" 
+                          id="{{ family.name }}" 
+                          style="background: url('{{ metal.image.url }}') no-repeat center center;">
+                        </a>
+                      </div>
+                    {% else %}
+                      <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                        <!-- Checkbox input gibi görünen bağlantı -->
+                        <a href="{% url 'product' family.slug %}" 
+                          class="form-check-input rounded-5 p-3 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}" 
+                          id="{{ family.name }}" 
+                          style="background: url('{{ metal.image.url }}') no-repeat center center;"
+                          onmouseover="changeMainImage('{{ product.id }}', '{{ family.image.url }}', '{{family.price}}','{{metal}}', this)"
+                          onmouseout="resetMainImage('{{ product.id }}', '{{ product.image.url }}','{{product.price}}','{{selected_metal}}', this)">
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
                 {% endfor %}
               </div>
             {% endif %}

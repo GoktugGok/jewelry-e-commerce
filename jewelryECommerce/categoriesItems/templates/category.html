@@ -451,8 +451,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 text-end small mb-3">{{total}} Sonuc</div>
-        <div class="col-lg-3 CategoryMenusC">
+        <div class="col-12 text-end small mb-3" id="result-count">{{total}} Sonuç</div>
+        <div class="col-lg-3 CategoryMenusC pb-5">
             <select class="s1 mb-4 form-select rounded-0 border-1 " aria-label="Default select example">
                 <option class="p-1">Open this select menu</option>
                 <option class="p-1" value="1">One</option>
@@ -473,426 +473,558 @@
                 </div>
 
            </div>
-           <!-- {% for category_hierarch in category_hierarchy %}
-                <hr class="mt-5">
-                <h6 class="categoryTitle mt-4">{{ category_hierarch.parent_name }}</h6>
-                <div class="form-check my-3">
-                    {% for child in category_hierarch.children %}
-                        {% if child.image and not child.color and not child.size %}
+           <form id="filterForm" method="GET" class="my-3">
+            {% if is_main_category %}
+                {% if category.metals.all %}
+                    <hr class="my-4">
+                    <h6 class="categoryTitle mt-4">Kategoriler</h6>
+                    <div class="my-3"> 
+                            {% for categories in category.categories.all %}
+                                {% for categories_name, count in categories_counts.items %}
+                                {% if categories_name == categories.name and count > 0 %}
+                                    <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                    <input type="checkbox" name="category" value="{{ categories.name }}" class="filter-checkbox form-check-input rounded-0 border-1 border-dark shadow Category" id="{{ categories.name }}">
+
+                                    <div class="d-flex">
+                                        <label class="form-check-label ms-2 mt-1 Text" for="{{ categories.name }}">
+                                        {{ categories.name }}
+                                        </label>
+                                        <div class="ms-1 mt-1 small">({{ count }})</div>
+                                    </div>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if category.metals.all %}
+                <hr class="my-4">
+                <h6 class="categoryTitle mt-4">Metal</h6>
+                <div class="my-3"> 
+                {% for metal in category.metals.all %}
+                    {% for metal_name, count in metal_counts.items %}
+                        {% if metal_name == metal.name and count > 0 %}
                             <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                                {% if child.slug == 'iki-tonlu' %}
-                                    <input class="form-check-input rounded-5 p-3 shadow" 
-                                        id="{{ child.name }}" 
-                                        style="background: url('{{ child.image.url }}') no-repeat center center; transform: rotate(45deg);" 
-                                        type="checkbox">
+                                {% if metal.slug == 'iki-tonlu' %}
+                                    <input class="form-check-input filter-checkbox rounded-5 p-3 shadow" 
+                                        name="metal"
+                                        id="{{ metal.name }}" 
+                                        style="background: url('{{ metal.image.url }}') no-repeat center center; transform: rotate(45deg);" 
+                                        type="checkbox"
+                                        value="{{ metal.name }}
+                                    ">
                                 {% else %}
-                                    <input class="form-check-input rounded-5 p-3 shadow" 
-                                        id="{{ child.name }}" 
-                                        style="background: url('{{ child.image.url }}') no-repeat center center;" 
-                                        type="checkbox">
+                                    <input class="filter-checkbox form-check-input rounded-5 p-3 shadow"
+                                        id="{{ metal.name }}"
+                                        style="background: url('{{ metal.image.url }}') no-repeat center center;"
+                                        type="checkbox"
+                                        name="metal"
+                                        value="{{ metal.name }}"
+                                        >
                                 {% endif %}
                                 <div class="d-flex">
-                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
-                                        {{ child.name }}
+                                    <label class="form-check-label filter-checkbox ms-2 mt-1 Text" for="{{ metal.name }}">
+                                        {{ metal.name }}
                                     </label>
-                                    <div class="ms-1 mt-1 small">(2)</div>
-                                </div>
-                            </div>
-                        {% elif child.color and not child.image and not child.size %}
-                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                                <input class="form-check-input rounded-5 p-3 shadow" id="{{ child.name }}" style="background: {{ child.color }};" type="checkbox">
-                                <div class="d-flex">
-                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
-                                        {{ child.name }}
-                                    </label>
-                                    <div class="ms-1 mt-1 small">(2)</div>
-                                </div>
-                            </div>
-                        {% elif child.size and not child.image and not child.color %}
-                            <label class="size-label ms-0 btn btn-outline-dark rounded-0 border border-1 mt-2">
-                                <input type="checkbox" class="form-check-input d-none Size" id="{{child.size}}" onclick="toggleCheckbox(this)">
-                                <div class="box text-center p-1">{{child.size}}</div>
-                            </label>
-                        {% elif child.price  %}
-                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                                <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="{{child.price}}">
-                                <div class="d-flex">
-                                    <label class="form-check-label ms-2 mt-1 Text small" for="{{child.price}}">
-                                        {{child.price}} 
-                                    </label>
-                                    <div class="ms-1 mt-1 small">(1)</div>
-                                </div>
-                            </div>    
-                        {% elif not child.image and not child.color and not child.size and not child.prize %}
-                            <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                                <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="{{ child.name }}">
-                                <div class="d-flex">
-                                    <label class="form-check-label ms-2 mt-1 Text" for="{{ child.name }}">
-                                        {{ child.name }} 
-                                    </label>
-                                    <div class="ms-1 mt-1 small">(45)</div>
+                                    <div class="ms-1 mt-1 small">({{count}})</div>
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
+                {% endfor %}
                 </div>
-            {% endfor %} -->
-            
-
-
-            <!-- <h6 class="categoryTitle mt-4">Kategoriler</h6>
-
-            <div class="form-check my-3">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class=" form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category1">
-                    <div class="d-flex ">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Category1">
-                            Charm’lar  
-                        </label>
-                        <div class="ms-1 mt-1 small">(45)</div>
-                    </div>
+            {% endif %}
+            {% if category.colors.all %}
+                <hr class="my-4">
+                <h6 class="categoryTitle mt-4">Renk</h6>
+                <div class=" my-3"> 
+                    {% for color in category.colors.all %}
+                        {% for color_name, count in color_counts.items %}
+                            {% if color_name == color.name and count > 0 %}
+                                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                    <input class="form-check-input filter-checkbox rounded-5 p-3 shadow" 
+                                    id="{{ color.name }}" 
+                                    style="background: {{ color.color }};" 
+                                    type="checkbox"
+                                    name="color"
+                                    value="{{ color.name }}"
+                                    >
+                                    <div class="d-flex">
+                                        <label class="form-check-label ms-2 mt-1 Text" for="{{ color.name }}">
+                                            {{ color.name }}
+                                        </label>
+                                        <div class="ms-1 mt-1 small">({{count}})</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    
                 </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category2">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Category2">
-                            Bileklikler
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
+            {% endif %}
+            {% if category.collections.all %}
+                <hr class="my-4">
+                <h6 class="categoryTitle mt-4">Koleksiyon</h6>
+                <div class="my-3"> 
+                    {% for collection in category.collections.all %}
+                        {% for collection_name, count in collection_counts.items %}
+                            {% if collection_name == collection.name and count > 0 %}
+                                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                    <input 
+                                    class="form-check-input filter-checkbox rounded-0 border-1 border-dark shadow" 
+                                    type="checkbox" 
+                                    id="{{ collection.name }}"
+                                    name="collection"
+                                    value="{{ collection.name }}"
+                                    >
+                                    <div class="d-flex">
+                                        <label class="form-check-label ms-2 mt-1 Text" for="{{ collection.name }}">
+                                            {{ collection.name }} 
+                                        </label>
+                                        <div class="ms-1 mt-1 small">({{count}})</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}                    
                 </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category3">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Category3">
-                            Yuzukler
-                        </label>
-                        <div class="ms-1 mt-1 small">(3)</div>
-                    </div>
+            {% endif %}
+            {% if category.themes.all %}
+                <hr class="my-4">
+                <h6 class="categoryTitle mt-4">Temalar</h6>
+                <div class="my-3"> 
+                    {% for theme in category.themes.all %}
+                        {% for theme_name, count in theme_counts.items %}
+                            {% if theme_name == theme.name and count > 0 %}
+                                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                    <input class="form-check-input filter-checkbox rounded-0 border-1 border-dark shadow" 
+                                    type="checkbox" 
+                                    id="{{ theme.name }}"
+                                    name="theme"
+                                    value="{{ theme.name }}"
+                                    >
+                                    <div class="d-flex">
+                                        <label class="form-check-label ms-2 mt-1 Text" for="{{ theme.name }}">
+                                            {{ theme.name }} 
+                                        </label>
+                                        <div class="ms-1 mt-1 small">({{count}})</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category4">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Category4">
-                            Kolyeler
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
+            {% endif %}
+            {% if category.priceRange.all %}   
+                <hr class="my-4">
+                <h6 class="categoryTitle mt-4">Fiyatlar</h6>
+                <div class=" my-3"> 
+                    {% for price in category.priceRange.all %}
+                        {% for priceRange_name, count in priceRange_counts.items %}
+                            {% if priceRange_name == price.name and count > 0 %}
+                                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
+                                    <input class="form-check-input filter-checkbox rounded-5 border-1 border-dark shadow" 
+                                    type="checkbox" 
+                                    id="{{ price.name }}"
+                                    name="price"
+                                    value="{{ price.name }}"
+                                    >
+                                    <div class="d-flex">
+                                        <label class="form-check-label ms-2 mt-1 Text" for="{{ price.name }}">
+                                            {{ price.name }} 
+                                        </label>
+                                        <div class="ms-1 mt-1 small">({{count}})</div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="Category5">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Category5">
-                            Kupeler
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-5">
-             Ile Uyumlu 
-            <h6 class="categoryTitle mt-4">Ile Uyumlu</h6>
-
-            <div class="form-check my-3">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="">
-                            Pandora Moments
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
-                            Kupeler
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="flexCheckDefault">
-                            Kupeler
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-            </div> 
-
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Metal</h6>
-
-            <div class=" my-3"> 
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Silver" style="background: url('/static/image/Silver.png') no-repeat center center;"type="checkbox" >
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Silver">
-                            Silver
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="goldImg" style="background: url('/static/image/Gold.png') no-repeat center center;"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="goldImg">
-                            Gold
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="twoTone" style="background: url('/static/image/twoTone.png') no-repeat center center; transform: rotate(45deg);" type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="twoTone">
-                            Iki Tonlu
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: url('/static/image/Pandora Rose.png') no-repeat center center;"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
-                            Pembe Altin Kaplama
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Renk</h6>
-
-            <div class=" my-3">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: white;"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
-                            Renk Yok
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(167, 0, 0);"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
-                            Kirmizi
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: rgb(0, 0, 163);"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
-                            Mavi
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 p-3 shadow" id="Rose" style="background: black;"type="checkbox">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text" for="Rose">
-                            Siyah
-                        </label>
-                        <div class="ms-1 mt-1 small">(2)</div>
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Koleksiyon</h6>
-            <div class="form-check my-3">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-            </div>
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Temalar</h6>
-            <div class="form-check my-3">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-0 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        Charm’lar (45)
-                    </label>
-                </div>
-            </div>        
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Beden</h6>
-            <div class="container">
-                <div class="row mt-3 g-3 pb-3">
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input d-none Size" id="size1" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">tek beden</div>
-                    </label>
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">48</div>
-                    </label>
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">42</div>
-                    </label>
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input Size d-none Size" id="size1" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">tek beden</div>
-                    </label>
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input d-none Size" id="size2" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">48</div>
-                    </label>
-                    <label class="col-2 col-sm-3 col-md-2 size-label btn btn-outline-dark rounded-0 border border-1 me-2 d-flex align-items-center justify-content-center">
-                        <input type="checkbox" class="form-check-input d-none Size" id="size3" onclick="toggleCheckbox(this)">
-                        <div class="box text-center">42</div>
-                    </label>
-                </div>
-            </div> 
-            <hr class="mt-5">
-            <h6 class="categoryTitle mt-4">Fiyat</h6>
-            <div class="form-check my-3 mb-5">
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <div class="d-flex">
-                        <label class="form-check-label ms-2 mt-1 Text small" for="flexCheckDefault">
-                            750-1000TL 
-                        </label>
-                        <div class="ms-1 mt-1 small">(1)</div>
-                    </div>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault2">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        750-1000 TL (1)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        750-1000TL (1)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 Text" for="flexCheckDefault">
-                        750-1000TL (1)
-                    </label>
-                </div>
-                <div class="w-100 mb-3 d-flex align-items-center justify-content-start">
-                    <input class="form-check-input rounded-5 border-1 border-dark shadow" type="checkbox" id="flexCheckDefault">
-                    <label class="form-check-label ms-2 " for="flexCheckDefault">
-                        750-1000 TL (1)
-                    </label>
-                </div>
-            </div>-->
+            {% endif %}
+            </form>
         </div>
         <div class="col-lg-9 mb-3">
-            <div class="row">
-                {% for product in products %}
-                    <div class="col-sm-4 col-6 text-decoration-none mb-4">
-                        <div class="position-relative s1 mb-3">
-                            <div class="position-absolute top-0 end-0 me-3 mt-2" style="cursor: pointer;">
-                                <i class="bi bi-heart text-dark" id="heart-{{ product.id }}"></i>
+            <div id="product-list">
+                <div class="row" >
+                    {% for product in products %}
+                        <div class="col-sm-4 col-6 text-decoration-none mb-4">
+                            <div class="position-relative s1 mb-3">
+                                <div class="position-absolute top-0 end-0 me-3 mt-2" style="cursor: pointer;">
+                                    <i class="bi bi-heart text-dark" id="heart-{{ product.id }}"></i>
+                                </div>
+                                <a href="{% url 'product' product.slug %}" id="image-container-{{ product.id }}">
+                                    <img src="{{ product.image.url }}" alt="" class="img-fluid main-image" id="product-image-{{ product.id }}">
+                                    <div class="ShowDetails position-absolute bottom-0 start-50 translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
+                                </a>
                             </div>
-                            <a href="{% url 'product' product.slug %}" id="image-container-{{ product.id }}">
-                                <img src="{{ product.image.url }}" alt="" class="img-fluid main-image" id="product-image-{{ product.id }}">
-                                <div class="ShowDetails position-absolute bottom-0 start-50 translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
-                            </a>
-                        </div>
-
-                        <!-- Varyasyonları listeliyoruz -->
-                        <div class="d-flex p-0">
-                            {% if product.family.all %}
-                                {% for family in metals_set %}
-                                    {% for metal in family.metals.all %}
-                                        <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
-                                            <a href="{% url 'product' family.slug %}"
-                                            class="form-check-input rounded-5 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}"
-                                            id="{{ family.name }}"
-                                            style="background: url('{{ metal.image.url }}') no-repeat center center;"
-                                            onmouseover="changeMainImage('{{ product.id }}', '{{ family.image.url }}', '{{ family.name }}', this)"
-                                            onmouseout="resetMainImage('{{ product.id }}', '{{ product.image.url }}', this)">
-                                            </a>
-                                        </div>
+                            <div class="d-flex p-0">
+                                {% if product.family.all %}
+                                    {% for family in metals_set %}
+                                        {% for metal in family.metals.all %}
+                                            {% if product.name == family.name %}
+                                                <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                                                    <a href="{% url 'product' family.slug %}"
+                                                    class="form-check-input rounded-5 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}"
+                                                    id="{{ family.name }}"
+                                                    style="background: url('{{ metal.image.url }}') no-repeat center center;">
+                                                    </a>
+                                                </div>
+                                            {% else %}
+                                                <div class="me-2 mb-3 float-left d-flex align-items-center justify-content-start">
+                                                    <a href="{% url 'product' family.slug %}"
+                                                    class="form-check-input rounded-5 shadow metal-checkbox {% if family.slug == product.slug %}checked{% endif %}"
+                                                    id="{{ family.name }}"
+                                                    style="background: url('{{ metal.image.url }}') no-repeat center center;"
+                                                    onmouseover="changeMainImage('{{ product.id }}', '{{ family.image.url }}', '{{family.price}}', this)"
+                                                    onmouseout="resetMainImage('{{ product.id }}', '{{ product.image.url }}','{{product.price}}', this)">
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endfor %}
-                                {% endfor %}
-                            {% endif %}
-                        </div>
+                                {% endif %}
+                            </div>
 
-                        <!-- Ürün bilgileri -->
-                        <div class="s2 mb-3">
-                            <a href="{% url 'product' product.slug %}" class="text-decoration-none">
-                                <p class="m-0 s2 text-dark mb-1">{{ product.name }}</p>
-                                <div class="m-0 s2 price mt-1 text-dark">{{ product.price }} TL</div>
-                            </a>
+                            <!-- Ürün bilgileri -->
+                            <div class="s2 mb-3">
+                                <a href="{% url 'product' product.slug %}" class="text-decoration-none">
+                                    <p class="m-0 s2 text-dark mb-1" >{{ product.name }}</p>
+                                    <div class="m-0 s2 price mt-1 text-dark" id="product-price-{{ product.id }}">{{ product.price }} TL</div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-
-                <div class="col-sm-4 col-6">
-                    <div class="position-relative s1">
-                        <div class="position-absolute top-0 end-0 me-3 mt-2">
-                            <i class="bi bi-heart text-dark" id="heart"></i>
-                        </div>
-                        <img src="{% static 'image/YProduct.png' %}" alt="" class="img-fluid ">
-                        <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
-                    </div>
-                    <div class="s2 mt-2">
-                        <p class="m-0 s2 text-secondary">YENI</p>
-                        <p class="m-0 s2 text-dark mb-1">Işıltılı Yin&Yang Mini Sallantılı Charm</p>
-                        <div class="m-0 s2 price mt-1">1.059,00 TL</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-6">
-                    <div class="position-relative s1">
-                        <div class="position-absolute top-0 end-0 me-3 mt-2">
-                            <i class="bi bi-heart text-dark" id="heart"></i>
-                        </div>
-                        <img src="{% static 'image/YProduct.png' %}" alt="" class="img-fluid ">
-                        <div class="ShowDetails position-absolute bottom-0 start-50  translate-middle-x btn btn-dark mb-3 rounded-0">URUNU GORUNTULE</div>
-                    </div>
-                    <div class="s2 mt-2">
-                        <p class="m-0 s2 text-secondary">YENI</p>
-                        <p class="m-0 s2 text-dark mb-1">Işıltılı Yin&Yang Mini Sallantılı Charm</p>
-                        <div class="m-0 s2 price mt-1">1.059,00 TL</div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    
+    document.querySelectorAll('input[name="category"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const params = new URLSearchParams(window.location.search);
+        if (this.checked) {
+        params.set('category', this.value);
+        } else {
+        params.delete('category');
+        }
+        const newUrl = window.location.pathname + '?' + params.toString();
+        window.history.pushState({}, '', newUrl);
+
+        // Burada Ajax ile ürünleri çekip DOM'a yerleştir
+        // Şimdilik sadece konsola yazalım
+        console.log('Yeni URL:', newUrl);
+
+        // TODO: AJAX çağrısı yap ve ürünleri yenile
+    });
+    });
+
+</script>
 <script src="{% static 'js/category.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    console.log("Filtreleme scripti yüklendi! 😎");
+
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            const params = new URLSearchParams();
+
+            // Tüm filtre alanları burada ayrı ayrı toplanıyor
+            const filterNames = ['category', 'metal', 'color', 'theme', 'collection', 'price'];
+
+            filterNames.forEach(name => {
+                const selected = Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+                    .map(cb => cb.value);
+                selected.forEach(value => {
+                    params.append(name, value);
+                });
+            });
+
+            const newUrl = window.location.pathname + '?' + params.toString();
+            console.log("Yeni URL:", newUrl);
+
+            fetch(newUrl, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('product-list').innerHTML = data.html;
+                history.replaceState(null, '', newUrl);
+            });
+        });
+    });
+});
+
+    // Checkbox'ları seçiyoruz (class ismini kendine göre ayarla)
+const filterCheckboxes = document.querySelectorAll('input[type="checkbox"].filter-checkbox');
+
+// Filtre listesini güncelleyen fonksiyon (gerekirse kullanabilirsin)
+function updateFilterList() {
+    const filterList = document.getElementById('filterList');
+    const filterListM = document.getElementById('filterListM');
+    const filterContainer = document.getElementById('filters');
+    const filterContainerM = document.getElementById('filtersM');
+
+    filterList.innerHTML = '';
+    filterListM.innerHTML = '';
+
+    let hasChecked = false;
+
+    filterCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            hasChecked = true;
+            let label = '';
+
+            // Label metnini alıyoruz
+            if (checkbox.nextElementSibling && checkbox.nextElementSibling.classList.contains('Text')) {
+                label = checkbox.nextElementSibling.textContent.trim();
+            } else if (checkbox.classList.contains('Color')) {
+                label = checkbox.closest('div').querySelector('.fake-checkbox').textContent.trim();
+            } else if (checkbox.classList.contains('Size')) {
+                const closestLabel = checkbox.closest('label');
+                label = closestLabel.querySelector('.box').textContent.trim();
+            } else {
+                label = checkbox.value || 'Unknown';
+            }
+            const name = checkbox.name;
+
+            const itemHtml = `
+                <div class="col-md-2 col-sm-3 col-lg-4 col-6 d-flex justify-content-center align-items-center border border-1 rounded-5 filter-tag" data-name="${name}" data-value="${label}">
+                    <div class="small">${label}</div>
+                    <i class="p-0 m-0 bi bi-x mt-1 remove-filter" style="cursor:pointer;"></i>
+                </div>
+            `;
+
+
+            if (window.innerWidth < 991) {
+                filterListM.innerHTML += itemHtml;
+                filterList.innerHTML += itemHtml;
+            } else {
+                filterList.innerHTML += itemHtml;
+                filterListM.innerHTML += itemHtml;
+            }
+        }
+    });
+
+    if (hasChecked) {
+        filterContainer.style.display = 'block';
+        filterContainerM.style.display = 'block';
+    } else {
+        filterContainer.style.display = 'none';
+        filterContainerM.style.display = 'none';
+    }
+
+    // 🧠✨ Yeni eklenen çarpı butonlarına tıklama olayını bağla
+    attachRemoveEvents();
+}
+function getCheckboxLabel(checkbox) {
+    if (checkbox.nextElementSibling && checkbox.nextElementSibling.classList.contains('Text')) {
+        return checkbox.nextElementSibling.textContent.trim();
+    } else if (checkbox.classList.contains('Color')) {
+        return checkbox.closest('div').querySelector('.fake-checkbox').textContent.trim();
+    } else if (checkbox.classList.contains('Size')) {
+        return checkbox.closest('label').querySelector('.box').textContent.trim();
+    } else {
+        return checkbox.value.trim();
+    }
+}
+
+function attachRemoveEvents() {
+    document.querySelectorAll('.remove-filter').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const valueToRemove = this.parentNode.dataset.value.trim();
+
+            const allCheckboxes = document.querySelectorAll('.filter-checkbox');
+            allCheckboxes.forEach(cb => {
+                const labelText = getCheckboxLabel(cb);
+                if (labelText === valueToRemove) {
+                    cb.checked = false;
+                }
+            });
+
+            updateFilterList();   // Listeyi yenile
+            applyFiltersAjax();   // AJAX ile ürünleri güncelle
+        });
+    });
+}
+
+// Sayfa yüklenince mevcut filtreleri aktif et ve listeyi doldur
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+
+    params.forEach((value, key) => {
+        // value virgülle ayrılmışsa ayır
+        const values = value.split(',');
+        values.forEach(val => {
+            const checkbox = document.querySelector(`input[name="${key}"][value="${val}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    });
+
+    // Mevcut filtreleri ekrana yazdır
+    updateFilterList();
+});
+document.getElementById('FilterAllDeleteC').addEventListener('click', () => {
+    uncheckAllChecked();
+
+    // Filtre görünümünü temizle
+    document.getElementById('filters').style.display = 'none';
+    document.getElementById('filterList').innerHTML = '';
+
+    // URL temizle
+    const cleanUrl = window.location.pathname;
+    history.replaceState(null, '', cleanUrl);
+
+    // AJAX ile tüm ürünleri yeniden getir
+    fetch(cleanUrl, {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('product-list').innerHTML = data.html;
+    });
+});
+
+function applyFiltersAjax() {
+    const params = new URLSearchParams();
+
+    // Kategori seçilenler
+    const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+    if (selectedCategories.length > 0) {
+        selectedCategories.forEach(cat => params.append('category', cat));
+    }
+
+    // Metal seçilenler
+    const selectedMetals = Array.from(document.querySelectorAll('input[name="metal"]:checked')).map(cb => cb.value);
+    if (selectedMetals.length > 0) {
+        selectedMetals.forEach(metal => params.append('metal', metal));
+    }
+
+    // Color seçilenler
+    const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(cb => cb.value);
+    if (selectedColors.length > 0) {
+        selectedColors.forEach(color => params.append('color', color));
+    }
+
+    // Theme seçilenler
+    const selectedThemes = Array.from(document.querySelectorAll('input[name="theme"]:checked')).map(cb => cb.value);
+    if (selectedThemes.length > 0) {
+        selectedThemes.forEach(theme => params.append('theme', theme));
+    }
+
+    // Collection seçilenler
+    const selectedCollections = Array.from(document.querySelectorAll('input[name="collection"]:checked')).map(cb => cb.value);
+    if (selectedCollections.length > 0) {
+        selectedCollections.forEach(col => params.append('collection', col));
+    }
+
+    // Price seçilenler
+    const selectedPrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
+    if (selectedPrices.length > 0) {
+        selectedPrices.forEach(price => params.append('price', price));
+    }
+
+    const newUrl = window.location.pathname + '?' + params.toString();
+    window.history.pushState({}, '', newUrl);
+
+    // AJAX isteği
+    axios.get(newUrl, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+    .then(response => {
+        document.getElementById('product-list').innerHTML = response.data.html;
+
+        // 🔥 Direkt datadan total'i al ve DOM'a bas!
+        const resultCountEl = document.getElementById('result-count');
+        if (response.data.total !== undefined && resultCountEl) {
+            resultCountEl.textContent = `${response.data.total} Sonuç`;
+        }
+        })
+        .catch(error => {
+            console.error('Filtreleme hatası:', error);
+        });
+
+    }
+
+
+
+// Checkboxlara event listener ekle
+filterCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        updateFilterList();
+        applyFiltersAjax();
+    });
+});
+
+// Butonlar için toplu seçim iptal fonksiyonu
+function uncheckAllChecked() {
+    document.querySelectorAll('.filter-checkbox').forEach(cb => {
+        cb.checked = false;
+    });
+}
+
+
+// Silme butonları
+document.getElementById('FilterAllDeleteM').addEventListener('click', () => {
+    uncheckAllChecked();
+    document.getElementById('filtersM').style.display = 'none';
+    document.getElementById('filterList').innerHTML = '';
+    document.getElementById('filterListM').innerHTML = '';
+});
+document.getElementById('FilterAllDeleteC').addEventListener('click', () => {
+    uncheckAllChecked();
+    document.getElementById('filters').style.display = 'none';
+    document.getElementById('filterList').innerHTML = '';
+    document.getElementById('filterListM').innerHTML = '';
+
+    const cleanUrl = window.location.pathname;
+    history.replaceState(null, '', cleanUrl);
+
+    fetch(cleanUrl, {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('product-list').innerHTML = data.html;
+
+        // Burada total update et
+        const resultCountEl = document.getElementById('result-count');
+        if (data.total !== undefined && resultCountEl) {
+            resultCountEl.textContent = `${data.total} Sonuç`;
+        }
+    });
+});
+
+document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('remove-filter')) {
+        const valueToRemove = e.target.parentNode.dataset.value.trim();
+        const name = e.target.parentNode.dataset.name.trim();
+
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]`);  
+
+        checkboxes.forEach(cb => {
+            const labelText = getCheckboxLabel(cb);
+            if (labelText === valueToRemove) {
+                cb.checked = false;
+            }
+        });
+
+        updateFilterList();
+        applyFiltersAjax();
+    }
+});
+
+
+</script>
 {% endblock  %}
 

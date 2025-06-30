@@ -42,11 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-
-
-
-
 // Thumbnail Slider
 var thumbsSwiper = new Swiper('.thumbs-slider', {
   spaceBetween: 10,
@@ -87,3 +82,46 @@ carouselElement.addEventListener('slid.bs.carousel', function(event) {
 })
 
 thumbnails[0].classList.add('selected');
+
+function changeMainImage(productId, newImageUrl, newPrice, newMetalName,  check) {
+  const mainImage = document.getElementById(`product-image-${productId}`);
+  const priceElement = document.getElementById(`product-price-${productId}`);
+  const MetalName = document.getElementById(`product-metal-name-${productId}`);
+  console.log(newMetalName)
+  if (mainImage) {
+      if (!mainImage.dataset.originalSrc) {
+          mainImage.dataset.originalSrc = mainImage.src;
+      }
+      mainImage.src = newImageUrl;
+      if (priceElement && newPrice) {
+          // Orijinal fiyatı sakla
+          if (!priceElement.dataset.originalPrice) {
+              priceElement.dataset.originalPrice = priceElement.textContent;
+          }
+          priceElement.textContent = `${newPrice} TL`;
+      }
+      if(MetalName && newMetalName){
+        MetalName.textContent = `${newMetalName}`
+      }
+      if (check) { 
+          check.classList.add('checked');
+      }
+  }
+}
+function resetMainImage(productId, newImageUrl, mainPrice,mainMetalNames, check) {
+  const mainImage = document.getElementById(`product-image-${productId}`);
+  const priceElement = document.getElementById(`product-price-${productId}`);
+  const MetalName = document.getElementById(`product-metal-name-${productId}`);
+  if (mainImage && mainImage.dataset.originalSrc) {
+      mainImage.src = newImageUrl;
+      if (priceElement && priceElement.dataset.originalPrice) {
+          priceElement.textContent = `${mainPrice} TL`;
+      }
+      if(priceElement && mainMetalNames){
+        MetalName.textContent = `${mainMetalNames}`
+      }
+      if (check) { 
+          check.classList.remove('checked');
+      }
+  }
+}
