@@ -1,6 +1,5 @@
 # 💍 Pandora Tarzı E-Ticaret Sitesi Klonu | Gerçek Zamanlı Filtreleme & Mobil Uyum
 
-> **“Sayfa yenileme yok, her şey anında çalışıyor!”**  
 Bu proje, dünyaca ünlü Pandora'nın alışveriş deneyimini birebir taklit ederek sıfırdan geliştirildi.  
 Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla, modern bir e-ticaret sitesinin tüm parçalarını içinde barındırır.
 
@@ -44,11 +43,13 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 ## 📸 Ekran Görselleri
 
 | 🖥️ Masaüstü |
+
+🏠 Ana Sayfa
 |-------------|
 [![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
-
-[![Proje Demo] (screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
-
+🛍️ Ürün Listesi
+|-------------|
+[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
 
 ---
 
