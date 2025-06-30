@@ -43,9 +43,9 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 ## 📸 Ekran Görselleri
 
-| 🖥️ Masaüstü | 📱 Mobil |
-|-------------|----------|
-| ![desktop](screenshots/mainC.mp4) | ![mobile](mobile.png) |
+| 🖥️ Masaüstü |
+|-------------|
+| ![desktop](screenshots/mainC.mp4)
 
 ---
 
