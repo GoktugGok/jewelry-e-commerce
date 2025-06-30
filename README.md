@@ -47,7 +47,6 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 |-------------|
 [![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
 🛍️ Ürün Listesi
-|-------------|
 [![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
 
 ---
