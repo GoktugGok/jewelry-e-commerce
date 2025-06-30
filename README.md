@@ -1,0 +1,52 @@
+# 💍 Pandora Tarzı E-Ticaret Sitesi Klonu | Gerçek Zamanlı Filtreleme & Mobil Uyum
+
+> **“Sayfa yenileme yok, her şey anında çalışıyor!”**  
+Bu proje, dünyaca ünlü Pandora'nın alışveriş deneyimini birebir taklit ederek sıfırdan geliştirildi.  
+Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla, modern bir e-ticaret sitesinin tüm parçalarını içinde barındırır.
+
+---
+
+## 🌟 Öne Çıkan Özellikler
+
+### ⚡️ Gerçek Zamanlı Filtreleme (AJAX)
+- Filtreleme seçenekleri: **Metal**, **Renk**, **Fiyat Aralığı**, **Koleksiyon** vb.
+- Sayfa yenilemeden anında ürünleri filtrele
+- URL parametrelerine filtre bilgileri otomatik eklenir → paylaşılabilir link yapısı
+
+### 💎 Ürün Ailesi & Varyasyon Geçişi
+- Ürün detay sayfasında aynı modelin farklı renk varyasyonlarını gör
+- Hover’da önizleme + tıklamada ilgili sayfaya yönlendirme
+- Otomatik görsel güncelleme
+
+### 📱 Mobil Uyumlu Tasarım
+- Filtreler mobil için özel menüde gösterilir
+- Ürün listesi mobilde 2 sütunlu, masaüstünde 4 sütunlu yapı
+- Performans için lazy-loading kullanıldı
+
+### ❤️ Favori Sistemi
+- Favorilere ürün ekle (localStorage ile tutulur)
+- “Tamamlayıcı Ürünler” öneri sistemi
+
+---
+
+## 🔧 Kullanılan Teknolojiler
+
+| Katman       | Teknoloji         | Açıklama                                 |
+|--------------|-------------------|------------------------------------------|
+| **Backend**  | Django             | Ürün yönetimi, filtreleme endpoint'leri |
+| **Frontend** | Vanilla JavaScript | AJAX işlemleri, filtreleme, etkileşim   |
+|              | Bootstrap 5        | Responsive tasarım                      |
+| **Tasarım**  | CSS3 + Flexbox     | Mobil uyumlu özel stiller               |
+| **API**      | Axios              | AJAX istekleri                          |
+
+---
+
+## 📸 Ekran Görselleri
+
+| 🖥️ Masaüstü |
+|-------------|
+[![Pandora Clone Demo](https://img.youtube.com/vi/4rmXltN4lzM/0.jpg)](https://youtu.be/4rmXltN4lzM)
+
+
+---
+
