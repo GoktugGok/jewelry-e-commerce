@@ -45,7 +45,8 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 | 🖥️ Masaüstü |
 |-------------|
-| ![desktop](screenshots/mainC.mp4)
+<video src="screenshots/mainC.mp4" controls autoplay muted loop width="600"></video>
+
 
 ---
 
