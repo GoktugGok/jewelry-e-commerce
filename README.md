@@ -39,23 +39,38 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 | **API**      | Axios              | AJAX istekleri                          |
 
 ---
+## 🖥️ Masaüstü Görünümler
 
-## 📸 Ekran Görselleri
-
-| 🖥️ Masaüstü |
-|-------------|
-
-|🏠 Ana Sayfa |
-|-------------|
-[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
-
-|🛍️ Ürün Listesi|
-|-------------|
-[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
-
-|📄 Ürün Detay|
-|-------------|
+### 🏠 Ana Sayfa  
 [![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
 
 ---
+
+### 🛍️ Ürün Listesi  
+[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+
+---
+
+### 📄 Ürün Detay  
+[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+
+---
+
+## 📱 Mobil Görünümler
+
+### 🏠 Ana Sayfa  
+[![▶️ İzlemek için tıkla](screenshots/home-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+
+---
+
+### 🛍️ Ürün Listesi  
+[![▶️ İzlemek için tıkla](screenshots/products-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+
+---
+
+### 📄 Ürün Detay  
+[![▶️ İzlemek için tıkla](screenshots/detail-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+
+---
+
 
