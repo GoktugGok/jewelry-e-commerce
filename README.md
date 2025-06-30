@@ -45,7 +45,7 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 | 🖥️ Masaüstü |
 |-------------|
-[![Pandora Clone Demo](https://img.youtube.com/vi/4rmXltN4lzM/0.jpg)](https://youtu.be/4rmXltN4lzM)
+![Proje Demo](assets/mainC-ezgif.com-video-to-gif-converter.gif)
 
 
 ---
