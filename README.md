@@ -45,6 +45,8 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 | 🖥️ Masaüstü |
 |-------------|
+[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+
 [![Proje Demo] (screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
 
 
