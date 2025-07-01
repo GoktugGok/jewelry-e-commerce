@@ -97,3 +97,30 @@ Bu admin paneli, e-ticaret operasyonlarının hızlı ve verimli bir şekilde y�
 Bu panel, e-ticaret süreçlerini merkezileştirerek kullanıcı dostu bir yönetim deneyimi sunar.
 
 
+## ⚙️ Kurulum
+
+```bash
+# 1. Repoyu klonla
+git clone https://github.com/kullanici-adi/proje-adi.git
+cd proje-adi
+
+
+# 2. Sanal Ortam 
+python -m venv venv
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+
+
+# 3. Gereken Paketlerin Kurulumu
+pip install -r requirements.txt
+
+
+# 4. Veritabanı Migrasyonları
+python manage.py migrate
+
+# 5. Yönetici (Admin) Kullanıcısı Oluşturma
+python manage.py createsuperuser
+
+# 6. Projeyi Başlatma
+python manage.py runserver
+
