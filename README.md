@@ -43,36 +43,36 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 |🏠 Ana Sayfa |
 |-------------|
-[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/mainC.gif)](https://youtu.be/4rmXltN4lzM)
 
 ---
 
 |🛍️ Ürün Listesi |
 |-------------|
-[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/menuC.gif)](https://youtu.be/CaPrFtV_Wsk)
 
 ---
 
 |📄 Ürün Detay |
 |-------------|
-[![▶️ İzlemek için tıkla](screenshots/mainC-ezgif.com-video-to-gif-converter.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/productC.gif)](https://youtu.be/DF_GKciMD50)
 
 ---
 
 ## 📱 Mobil Görünümler
 
 ### 🏠 Ana Sayfa  
-[![▶️ İzlemek için tıkla](screenshots/home-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/mainM.gif)](https://youtu.be/67BQphoCt7k)
 
 ---
 
 ### 🛍️ Ürün Listesi  
-[![▶️ İzlemek için tıkla](screenshots/products-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/menuM.gif)](https://youtu.be/jwreRi7uapE)
 
 ---
 
 ### 📄 Ürün Detay  
-[![▶️ İzlemek için tıkla](screenshots/detail-mobile.gif)](https://youtu.be/4rmXltN4lzM)
+[![▶️ İzlemek için tıkla](screenshots/productM.gif)](https://youtu.be/5GOwtd5PvBY)
 
 ---
 
