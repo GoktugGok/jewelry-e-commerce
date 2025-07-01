@@ -78,10 +78,22 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 ## 🖥️ Admin Panel Preview
 
-Karanlık mod, temiz tasarım, havalı butonlar...  
-Aç bak, gözün şenlensin 😄
-
 ![Screenshot](screenshots/admin-panel.png)
 
+Bu admin paneli, e-ticaret operasyonlarının hızlı ve verimli bir şekilde yönetilmesini sağlar. Panel üzerinden aşağıdaki işlemler gerçekleştirilebilir:
+
+🛒 Yeni ürünlerin eklenmesi ve mevcut ürün bilgilerinin güncellenmesi
+
+📁 Ürün kategorilerinin oluşturulması ve düzenlenmesi
+
+👤 Kullanıcı verilerinin görüntülenmesi ve yönetilmesi
+
+📦 Siparişlerin takibi ve sipariş durumlarının güncellenmesi
+
+🗂️ Stok kontrolü ve ürün envanter yönetimi
+
+💬 Kullanıcı yorumlarının görüntülenmesi ve yönetimi
+
+Bu panel, e-ticaret süreçlerini merkezileştirerek kullanıcı dostu bir yönetim deneyimi sunar.
 
 
