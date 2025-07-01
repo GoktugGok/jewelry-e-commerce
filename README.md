@@ -100,9 +100,9 @@ Bu panel, e-ticaret süreçlerini merkezileştirerek kullanıcı dostu bir yöne
 ## ⚙️ Kurulum
 
 ```bash
-# 1. Repoyu klonla
-git clone https://github.com/kullanici-adi/proje-adi.git
-cd proje-adi
+# 1. Repoyu klonla 
+git clone https://github.com/GoktugGok/jewelry-e-commerce.git
+cd .\jewelryECommerce\
 
 
 # 2. Sanal Ortam 
