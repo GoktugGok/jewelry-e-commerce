@@ -81,7 +81,7 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 Karanlık mod, temiz tasarım, havalı butonlar...  
 Aç bak, gözün şenlensin 😄
 
-![Screenshot](screenshots/Screenshot_2025-07-01_153357.png)
+![Screenshot](screenshots/admin-panel.png)
 
 
 
