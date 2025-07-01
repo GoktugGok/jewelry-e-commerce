@@ -76,4 +76,11 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 ---
 
+## 🖥️ Admin Panel Preview
+
+Karanlık mod, temiz tasarım, havalı butonlar...  
+Aç bak, gözün şenlensin 😄
+
+![Screenshot](screenshots/Screenshot 2025-07-01 153357.png)
+
 
