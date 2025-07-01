@@ -104,16 +104,13 @@ Bu panel, e-ticaret süreçlerini merkezileştirerek kullanıcı dostu bir yöne
 git clone https://github.com/GoktugGok/jewelry-e-commerce.git
 cd .\jewelryECommerce\
 
-
 # 2. Sanal Ortam 
 python -m venv venv
 source venv/bin/activate  # Mac/Linux
 venv\Scripts\activate     # Windows
 
-
 # 3. Gereken Paketlerin Kurulumu
 pip install -r requirements.txt
-
 
 # 4. Veritabanı Migrasyonları
 python manage.py migrate
