@@ -1,77 +1,77 @@
-# 💍 Pandora Tarzı E-Ticaret Sitesi Klonu | Gerçek Zamanlı Filtreleme & Mobil Uyum
+# 💍 Pandora-Style E-Commerce Site Clone | Real-Time Filtering & Mobile Compatible
 
-Bu proje, dünyaca ünlü Pandora'nın alışveriş deneyimini birebir taklit ederek sıfırdan geliştirildi.  
-Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla, modern bir e-ticaret sitesinin tüm parçalarını içinde barındırır.
-
----
-
-## 🌟 Öne Çıkan Özellikler
-
-### ⚡️ Gerçek Zamanlı Filtreleme (AJAX)
-- Filtreleme seçenekleri: **Metal**, **Renk**, **Fiyat Aralığı**, **Koleksiyon** vb.
-- Sayfa yenilemeden anında ürünleri filtrele
-- URL parametrelerine filtre bilgileri otomatik eklenir → paylaşılabilir link yapısı
-
-### 💎 Ürün Ailesi & Varyasyon Geçişi
-- Ürün detay sayfasında aynı modelin farklı renk varyasyonlarını gör
-- Hover’da önizleme + tıklamada ilgili sayfaya yönlendirme
-- Otomatik görsel güncelleme
-
-### 📱 Mobil Uyumlu Tasarım
-- Filtreler mobil için özel menüde gösterilir
-- Ürün listesi mobilde 2 sütunlu, masaüstünde 4 sütunlu yapı
-- Performans için lazy-loading kullanıldı
-
-### ❤️ Favori Sistemi
-- Favorilere ürün ekle (localStorage ile tutulur)
-- “Tamamlayıcı Ürünler” öneri sistemi
+This project was developed from scratch, closely mimicking the shopping experience of the world-famous Pandora brand.
+It includes all components of a modern e-commerce site with real-time filtering, product variations, and mobile-responsive design.
 
 ---
 
-## 🔧 Kullanılan Teknolojiler
+## 🌟 Key Features
+
+### ⚡️ Real-Time Filtering (AJAX)
+- Filter options: Metal, Color, Price Range, Collection, etc.
+- Instant product filtering without page refresh
+- Filter information automatically added to URL parameters → shareable link structure
+
+### 💎 Product Family & Variation Switching
+- View different color variations of the same model on product detail page
+- Hover preview + redirect to relevant page on click
+- Automatic image updates
+
+### 📱 Mobile Responsive Design
+- Filters displayed in special menu for mobile
+- 2-column product list on mobile, 4-column on desktop
+- Lazy-loading used for performance
+
+### ❤️ Favorite System
+- Add products to favorites (stored with localStorage)
+- "Complementary Products" recommendation system
+  
+---
+
+## 🔧 Technologies Used
 
 | Katman       | Teknoloji         | Açıklama                                 |
 |--------------|-------------------|------------------------------------------|
-| **Backend**  | Django             | Ürün yönetimi, filtreleme endpoint'leri |
-| **Frontend** | Vanilla JavaScript | AJAX işlemleri, filtreleme, etkileşim   |
-|              | Bootstrap 5        | Responsive tasarım                      |
-| **Tasarım**  | CSS3 + Flexbox     | Mobil uyumlu özel stiller               |
-| **API**      | Axios              | AJAX istekleri                          |
+| **Backend**  | Django             | Product management, filtering endpoints |
+| **Frontend** | Vanilla JavaScript | AJAX operations, filtering, interactions|
+|              | Bootstrap 5        | Responsive design                       |
+| **Tasarım**  | CSS3 + Flexbox     | Mobile-compatible custom styles         |
+| **API**      | Axios              | AJAX requests                           |
 
 ---
-## 🖥️ Masaüstü Görünümler
+## 🖥️ Desktop Views
 
-|🏠 Ana Sayfa |
+|🏠 Home Page |
 |-------------|
 [![▶️ İzlemek için tıkla](screenshots/mainC.gif)](https://youtu.be/4rmXltN4lzM)
 
 ---
 
-|🛍️ Ürün Listesi |
+|🛍️ Product List |
 |-------------|
 [![▶️ İzlemek için tıkla](screenshots/menuC.gif)](https://youtu.be/CaPrFtV_Wsk)
 
 ---
 
-|📄 Ürün Detay |
+|📄 Product Detail |
 |-------------|
 [![▶️ İzlemek için tıkla](screenshots/productC.gif)](https://youtu.be/DF_GKciMD50)
 
 ---
 
-## 📱 Mobil Görünümler
+## 📱 Mobile Views
 
-### 🏠 Ana Sayfa  
+### 🏠 Home Page  
 [![▶️ İzlemek için tıkla](screenshots/mainM.gif)](https://youtu.be/67BQphoCt7k)
 
 ---
 
-### 🛍️ Ürün Listesi  
+### 🛍️ Product List  
 [![▶️ İzlemek için tıkla](screenshots/menuM.gif)](https://youtu.be/jwreRi7uapE)
 
 ---
 
-### 📄 Ürün Detay  
+### 📄 Product Detail 
 [![▶️ İzlemek için tıkla](screenshots/productM.gif)](https://youtu.be/5GOwtd5PvBY)
 
 ---
@@ -80,44 +80,44 @@ Gerçek zamanlı filtreleme, ürün varyasyonları ve mobil uyumlu tasarımıyla
 
 ![Screenshot](screenshots/admin-panel.png)
 
-Bu admin paneli, e-ticaret operasyonlarının hızlı ve verimli bir şekilde yönetilmesini sağlar. Panel üzerinden aşağıdaki işlemler gerçekleştirilebilir:
+This admin panel enables fast and efficient management of e-commerce operations. The following operations can be performed through the panel:
 
-🛒 Yeni ürünlerin eklenmesi ve mevcut ürün bilgilerinin güncellenmesi
+🛒 Adding new products and updating existing product information
 
-📁 Ürün kategorilerinin oluşturulması ve düzenlenmesi
+📁 Creating and editing product categories
 
-👤 Kullanıcı verilerinin görüntülenmesi ve yönetilmesi
+👤 Viewing and managing user data
 
-📦 Siparişlerin takibi ve sipariş durumlarının güncellenmesi
+📦  Order tracking and updating order statuses
 
-🗂️ Stok kontrolü ve ürün envanter yönetimi
+🗂️ Stock control and product inventory management
 
-💬 Kullanıcı yorumlarının görüntülenmesi ve yönetimi
+💬 Viewing and managing user reviews
 
-Bu panel, e-ticaret süreçlerini merkezileştirerek kullanıcı dostu bir yönetim deneyimi sunar.
+This panel centralizes e-commerce processes, providing a user-friendly management experience.
 
 
-## ⚙️ Kurulum
+## ⚙️ Installation
 
 ```bash
-# 1. Repoyu klonla 
+# 1. Clone the repository
 git clone https://github.com/GoktugGok/jewelry-e-commerce.git
 cd .\jewelryECommerce\
 
-# 2. Sanal Ortam 
+# 2. Virtual Environment
 python -m venv venv
 source venv/bin/activate  # Mac/Linux
 venv\Scripts\activate     # Windows
 
-# 3. Gereken Paketlerin Kurulumu
+# 3. Install Required Packages
 pip install -r requirements.txt
 
-# 4. Veritabanı Migrasyonları
+# 4. Database Migrations
 python manage.py migrate
 
-# 5. Yönetici (Admin) Kullanıcısı Oluşturma
+# 5. Create Admin User
 python manage.py createsuperuser
 
-# 6. Projeyi Başlatma
+# 6. Start the Project
 python manage.py runserver
 
